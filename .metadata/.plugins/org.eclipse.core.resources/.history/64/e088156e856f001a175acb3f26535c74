@@ -1,0 +1,11 @@
+    <head>
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/clientspace/assets/images/favicon.png}"
+     href="../static/clientspace/assets/images/favicon.png">
+    <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/clientspace/assets/plugins/bootstrap/css/bootstrap.min.css" th:href="@{/clientspace/assets/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../static/clientspace/css/style.css" th:href="@{/clientspace/css/style.css}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="../static/clientspace/css/colors/blue.css" th:href="@{/clientspace/css/colors/blue.css}"  id="theme" rel="stylesheet">
+   </head>

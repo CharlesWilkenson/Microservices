@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery multiStepForm Plugin Demo</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/headerSearch :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	  
+
+	    	
+	    	   	    	<div class="col-md-9">
+		
+		
+			  <div style="padding-left:10px;padding-right:80px;padding-top:70px">
+
+			  <div class="row">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">Search/Update Client</h3> </div>
+</div>
+			  	   <div class="signup-box " >
+<!--  <section id="main-content"> -->
+  <!-- <section id="main-content"> -->
+	  
+		<!-- page start-->
+ <form id="myForm" action="#" method="POST" >
+			  		
+
+	  <!-- One "tab" for each step in the form: -->
+	  <div class="card col-md-12">
+				  <div class="card-body">
+	  	  <div style="text-align:center;margin-top:5px;" >
+	    <span class="step" >1</span>
+	    <span class="step">2</span>
+	
+		
+	   
+	  </div>
+	  <br/>
+	  
+	  
+	  <div class="row">
+	  <div class="tab">
+
+
+  <h4 class="tcolor">Basic Information</h4>
+	
+		
+		<div class="row">
+		
+	
+						 <div class="col-md-4 mb-3">
+							   <b>Lastname</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="lastname" name="lastname"  placeholder="lastname" required>
+						</div>
+					</div>
+				  
+					</div>
+
+			      <input type="hidden" class="form-control" name="adress_id" id="adress_id" placeholder="code" required autofocus>
+						
+					<input type="hidden" class="form-control" name="code" id="code" placeholder="code" required autofocus>
+						
+					
+						 <div class="col-md-4 mb-3">
+							   <b>Firstname</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="firstname" name="firstname"  placeholder="firstname" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							   <b>Date of birth</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="dateBirth" name="dateBirth"  placeholder="Date of birth" required>
+						</div>
+					</div>
+				  
+					</div>
+		</div>
+		
+		
+		
+		
+		<div class="row">
+		
+		
+		  <div class="col-md-3">
+			  <b>Sex</b> 
+							  <div class="input-group">
+				          <span class="input-group-addon">
+							   <i class="material-icons">person</i>
+						  </span>
+						  <div class="form-control">
+						  <input type="radio" name="sex"  value="Male" class="filled-in chk-col-pink" checked>
+						  Male
+						
+						 <input type="radio" id="sex" name="sex"  value="Female" class="filled-in chk-col-pink">
+						Female
+					</div>
+					</div> <br/>
+	  	</div>
+
+		
+					
+						 <div class="col-md-4 mb-3">
+							   <b>Citizenship</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="citizenship" name="citizenship"  placeholder="Citizenship" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							   <b>Social number</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="identification" name="identification"  placeholder="Id" required>
+						</div>
+					</div>
+				  
+					</div>
+		</div>
+		
+		
+		
+		
+		</div></div>
+		
+		
+		
+		
+	  <div class="row">
+	  <div class="tab">
+  <h4 class="tcolor">Adress</h4>
+	  <div class="row">
+		 <div class="col-md-4 mb-3">
+							 <b>City</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="city" name="city"  placeholder="City" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+						    <div class="col-md-4 mb-3">
+						  <b>Street</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="street" name="street"  placeholder="Street" required>
+						</div>
+					</div>
+				  
+					</div>
+				
+					
+						    <div class="col-md-4 mb-3">
+						<b>#</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="number" name="number"  placeholder="Number" required>
+						</div>
+					</div>
+				  
+					</div>
+
+	  	</div>
+
+		<h4 class="tcolor">Contact</h4>
+					 <div class="row">
+			<div class="col-md-4 mb-3">
+							  <b>Email</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">email</i>
+						</span>
+						<div class="form-line">
+							<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+						</div>
+					</div>
+				  
+					</div>
+							   
+
+		
+					
+					
+				    <div class="col-md-4 mb-3">
+							   <b>Phone</b>
+							  <div class="input-group">
+				         <span class="input-group-addon">
+						   <i class="material-icons">phone</i>
+						</span>
+						 <div class="form-line">
+						<input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number" data-mask="(___) ___-____"/>
+							</div></div>				  
+					</div>			
+
+                 </div>		
+
+		</div>
+			
+	  <!-- Circles which indicates the steps of the form: -->
+	  <div style="text-align:center;margin-top:0px;display: none" id="btngroup">
+	    <!-- <span class="step">1</span>
+	    <span class="step">2</span> -->
+		<button type="button" class="previous btncolor">Previous</button>
+	      	<button type="button" class="next btncolor">Next</button>
+			<button type="button" class="submit btncolor" id="btnUpdate">Update</button>
+			     <span class="input-group-addon"id="ajaxLoader" style="padding-top:4px;display:none" ><img th:src="@{/images/ajaxLoader.gif}"/></span>
+                    
+	    <!-- <span class="step">3</span>
+	    <span class="step">4</span> -->
+	  </div>
+		</div>	
+		
+		</div></div>
+		
+	  </form>
+	
+     </div>
+	
+	  </div>
+	  
+	  </div>
+	
+
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+
+       $('#btnSearch').click( function (e) {
+    	   
+        	// var form = $('#searchClient')[0];
+        	$('#ajaxLoader').show();
+           //  var data = new FormData(form);
+          e.preventDefault();
+    var returnData;
+          $.ajax({
+        	  url: '/client-service/findClient',
+        	  type: "post",
+        	  cache:false,
+              data: $("#searchClient").serialize(),
+       
+              // prevent jQuery from automatically transforming the data into a query string
+             // processData: false,
+             // contentType: false,
+             // cache: false,
+             // timeout: 1000000,
+            success: function (returnData) {
+          	
+          	if(returnData===""){
+		   	runNotify({
+		        type: 'notify',
+		        message: 'Client not found!',
+		        levelMessage: 'warning'
+		        });
+		   	$('#ajaxLoader').hide();
+		    $('#btngroup').hide();
+		 }else{
+
+			    $('#code').val(returnData.code);
+				$('#lastname').val(returnData.lastname);
+				$("#firstname").val(returnData.firstname);
+				$("#sex").prop("checked") ? true : false;
+				$("#dateBirth").val(returnData.dateBirth);
+		
+			    $("#citizenship").val(returnData.citizenship);
+		
+				$("#email").val(returnData.email);
+				$("#phone").val(returnData.phone);
+
+				$("#identification").val(returnData.identification);
+
+
+				$("#adress_id").val(returnData.adress.adress_id);
+				$("#city").val(returnData.adress.city);
+			    $("#street").val(returnData.adress.street);
+			    $("#number").val(returnData.adress.number);
+
+			
+           $('#btngroup').show();
+
+           $('#ajaxLoader').hide();
+	            	}
+		   
+          	
+          	
+            },
+            error:function(){
+          		runNotify({
+                      type: 'notify',
+                        message: 'Internal server error!'+err.responseText,
+                      levelMessage: 'error'
+                      });
+          		$('#ajaxLoader').hide();
+            }
+          });
+
+        });
+
+
+
+
+
+	     $('#myForm').on('submit', function (e) {
+	      	 var form = $('#myForm')[0];	           
+	         var data = new FormData(form);
+	         $('#ajaxLoader').show();
+	        e.preventDefault();
+
+	        $.ajax({
+	      	  url: '/client-service/updateClient',
+	      	  type: "put",
+	      	  cache:false,
+	            data: data,
+	     
+	            // prevent jQuery from automatically transforming the data into a query string
+	            processData: false,
+	            contentType: false,
+	            cache: false,
+	            timeout: 1000000,
+	          success: function () {
+	        		runNotify({
+	                    type: 'notify',
+	                    message: 'Client has been updated successfuly!',
+	                    levelMessage: 'success'
+	                    });
+	        		reset(); 
+	        		 $('#btngroup').hide();
+	        		 $('#ajaxLoader').hide();
+	        		
+	          },
+	          error:function(){
+	        		runNotify({
+	                    type: 'notify',
+	                    message: 'Failed to update client!',
+	                    levelMessage: 'error'
+	                    });
+	        		 $('#ajaxLoader').hide();
+	          }
+	        });
+
+	      });
+
+
+});
+
+
+
+function reset(){
+  	 
+	$('#code').val("");
+	$('#lastname').val("");
+	$("#firstname").val("");
+	$("#sex").prop("checked") ? true : false;
+	$("#dateBirth").val("");
+    $("#citizenship").val("");
+	$("#email").val("");
+	$("#phone").val("");
+	$("#identification").val("");
+
+	$("#adress_id").val("");
+	$("#city").val("");
+    $("#street").val("");
+    $("#number").val("");
+
+    $('#btngroup').hide();
+		}
+
+</script>
+</body>
+</html>
+
+
+		
+		
+	
+	

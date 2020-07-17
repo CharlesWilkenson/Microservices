@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;templates&apos;&#x0D;&#x0A;- Original project: &apos;client-service&apos;&#x0D;&#x0A;- Destination element: &apos;templates&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     allClients.html&#x0D;&#x0A;     searchClient.html&#x0D;&#x0A;     saveClient.html" description="Copy files" element1="src/main/resources/templates/allClients.html" element2="src/main/resources/templates/searchClient.html" element3="src/main/resources/templates/saveClient.html" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1585452767076" target="/employee-service/src/main/resources/templates" units="0" version="1.0"/>
+</session>

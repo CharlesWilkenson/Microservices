@@ -1,0 +1,80 @@
+  <footer class="footer text-center">
+                © 2017 Monster Admin by wrappixel.com
+            
+            
+                <script  th:src="@{/clientspace/assets/plugins/bootstrap/js/tether.min.js}" src="../static/clientspace/assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script th:src="@{/clientspace/assets/plugins/bootstrap/js/bootstrap.min.js}" src="../static/clientspace/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script th:src="@{/clientspace/js/jquery.slimscroll.js}" src="../static/clientspace/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script th:src="@{/clientspace/js/waves.js}" src="../static/clientspace/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script th:src="@{/clientspace/js/sidebarmenu.js}" src="../static/clientspace/js/sidebarmenu.js"></script>
+ 
+ 
+    <!--stickey kit -->
+    <script  th:src="@{/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js}" 
+    src="../static/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script th:src="@{/clientspace/js/custom.min.js}" src="../static/clientspace/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+   
+   
+   
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- Flot Charts JavaScript -->
+    <script th:src="@{/clientspace/assets/plugins/flot/jquery.flot.js}" src="../static/clientspace/assets/plugins/flot/jquery.flot.js"></script>
+    <script  th:src="@{/clientspace/assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js}"  src="../static/clientspace/assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script th:src="@{/clientspace/js/flot-data.js}" src="../static/clientspace/js/flot-data.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script th:src="@{/clientspace/assets/plugins/styleswitcher/jQuery.style.switcher.js}" src="../static/clientspace/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+ <script th:src="@{/clientspace/assets/plugins/jquery/jquery.min.js}" src="../static/clientspace/assets/plugins/jquery/jquery.min.js}"></script>
+   
+                <!-- Jquery DataTable Plugin Js -->
+    <script th:src="@{/clientspace/plugins/jquery-datatable/jquery.dataTables.js}" src="../static/clientspace/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script  th:src="@{/clientspace/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js}" src="../static/clientspace/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="@{/clientspace/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js}"  src="../static/clientspace/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script th:src="@{/clientspace/plugins/jquery-datatable/extensions/export/buttons.flash.min.js}" src="../static/clientspace/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script th:src="@{/clientspace/plugins/jquery-datatable/extensions/export/jszip.min.js}" src="../static/clientspace/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script  th:src="@{/clientspace/plugins/jquery-datatable/extensions/export/pdfmake.min.js}" src="../static/clientspace/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script th:src="@{/clientspace/plugins/jquery-datatable/extensions/export/vfs_fonts.js" src="../static/clientspace/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script th:src="@{/clientspace/plugins/jquery-datatable/extensions/export/buttons.html5.min.js}" src="../static/clientspace/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script th:src="@{/clientspace/plugins/jquery-datatable/extensions/export/buttons.print.min.js}" src="../static/clientspace/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <script th:src="@{/clientspace/js/admin.js}" src="../static/clientspace/js/admin.js"></script>
+    <script th:src="@{/clientspace/js/pages/tables/jquery-datatable.js}" src="../static/clientspace/js/pages/tables/jquery-datatable.js"></script>
+
+    <!-- Demo Js -->
+    <script th:src="@{/clientspace/js/demo.js}" src="../static/clientspace/js/demo.js"></script>
+	
+	
+	
+    <!-- ============================================================== -->
+<!--     <script src="../assets/plugins/jquery/jquery.min.js"></script> -->
+    <!-- Bootstrap tether Core JavaScript -->
+ <!--    <script src="../assets/plugins/bootstrap/js/tether.min.js"></script> -->
+   <!--  <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script> -->
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <!-- <script src="js/jquery.slimscroll.js"></script> -->
+    <!--Wave Effects -->
+   <!--  <script src="js/waves.js"></script> -->
+    <!--Menu sidebar -->
+   <!--  <script src="js/sidebarmenu.js"></script> -->
+    <!--stickey kit -->
+    <script th:src="@{/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js}" src="../static/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script th:src="@{/clientspace/js/custom.min.js}" src="../static/clientspace/clientspace/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+ <!--    <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script> -->
+	
+	
+	
+            </footer>
+            

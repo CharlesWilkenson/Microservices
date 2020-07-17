@@ -1,0 +1,103 @@
+package org.clientspace.restController;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
+
+   @Controller
+       public class indexController {
+    	   @Autowired
+    	   private OAuth2RestTemplate restTemplate;
+    	   
+    	   private String accountNumber;
+    	   
+	 @RequestMapping("/alldeposits")
+		public String alldeposits(Model model/* ,@RequestParam("numCompte")String numCompte */) {
+		/* MultiValueMap<Object, String> map=new LinkedMultiValueMap<Object, String>();
+		 map.put("numCompte", value)*/
+			String url="http://operation-service/alldeposits/"+accountNumber;	
+			  Deposit[] response  = restTemplate.getForObject(url, Deposit[].class); 
+			  double sum=0;
+			  for(Deposit d:response) {
+				  sum +=d.getAmount();
+				  System.out.println("Amount of money :"+d.getAmount());
+			  }
+					
+		model.addAttribute("deposits", response);
+		model.addAttribute("sumdeposits", sum);
+		return"alldeposits";
+	}
+	
+	
+	 @RequestMapping("/allwithdrawals")
+		public String allwithdrawals(Model model) {
+			String url="http://operation-service/allwithdrawals/"+accountNumber;
+			  double sum=0;
+			  
+			Withdrawal[] response  = restTemplate.getForObject(url, Withdrawal[].class); 
+					  
+					  for(Withdrawal d:response) {
+						  sum +=d.getAmount();
+						  System.out.println("Amount of money :"+d.getAmount());
+					  }
+	        model.addAttribute("withdrawals", response);
+	        model.addAttribute("sumwithdrawals", sum);
+			return"allwithdrawals";
+		}
+	 
+	 @RequestMapping("/alltransferts")
+		public String alltransferts(Model model) {
+			String url="http://operation-service/alltransferts/"+accountNumber;
+			  double sum=0;
+			  
+			Transfert[] response  = restTemplate.getForObject(url, Transfert[].class); 
+					  
+					  for(Transfert d:response) {
+						  sum +=d.getAmount();
+					 System.out.println("Amount of money :"+d.getAmount());
+					  }
+					    model.addAttribute("transferts", response);
+				        model.addAttribute("sumtransferts", sum);
+			            return"alltransferts";
+		}
+	
+
+	 
+	 
+	 @RequestMapping("/myprofil")
+		public String myprofil() {
+			
+			return"myprofil";
+		}
+	 
+	 
+	 @RequestMapping("/clientDashboard")
+		public String clientDashboard() {
+			
+			return"index";
+		}
+	 
+	 @PostMapping(value="/getNumber")
+		public String getAccountNumber(/* Model model,@RequestParam("numCompte")String numCompte */) {
+		     //model.addAttribute("accountNumber", accountNumber);	 
+				
+				System.out.println("Method is called "+accountNumber);
+			return "redirect:clientDashboard";
+		}
+	 
+	 
+	 @RequestMapping("/clientHomePage")
+		public String clientHomePage() {
+					 
+			return"clientHomePage";
+		}
+}

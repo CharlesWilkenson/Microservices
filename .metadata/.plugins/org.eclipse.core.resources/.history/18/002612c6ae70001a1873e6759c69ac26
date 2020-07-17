@@ -1,0 +1,249 @@
+package org.clientspace.restController;
+
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class ClientSpaceRest {
+
+	
+@Autowired
+private OAuth2RestTemplate restTemplate;
+	
+	@GetMapping(value = "/myDeposits")
+	public Deposit[] deposits(){
+		String url="http://operation-service/alldeposits/"+958537356;	
+				  Deposit[] response  = restTemplate.getForObject(url, Deposit[].class); 
+				  double sum=0;
+				  for(Deposit d:response) {
+					  sum +=d.getAmount();
+					  System.out.println("Amount of money :"+d.getAmount());
+				  }
+							
+				        return response;
+                               }
+
+	
+	@GetMapping(value = "/myWithdrawals")
+	public  Withdrawal[] withdrawals(){
+		String url="http://operation-service/allwithdrawals/"+958537356;
+		  double sum=0;
+		  
+		Withdrawal[] response  = restTemplate.getForObject(url, Withdrawal[].class); 
+				  
+				  for(Withdrawal d:response) {
+					  sum +=d.getAmount();
+					  System.out.println("Amount of money :"+d.getAmount());
+				  }
+						
+				        return response;
+                               }
+	
+	
+	@GetMapping(value = "/myTransferts")
+	public  Transfert[] transferts(){
+		String url="http://operation-service/alltransferts/"+958537356;
+		  double sum=0;
+		  
+		Transfert[] response  = restTemplate.getForObject(url, Transfert[].class); 
+				  
+				  for(Transfert d:response) {
+					  sum +=d.getAmount();
+				 System.out.println("Amount of money :"+d.getAmount());
+				  }
+						
+				        return response;
+                               }
+	
+	 @PostMapping(value="/getAccount")
+		public ResponseEntity<Object> getAccountNumber( Model model,@RequestParam("account_number")String numCompte ) {
+		    model.addAttribute("account_number", numCompte);	 
+			MultiValueMap<Object, String>map=new LinkedMultiValueMap<Object, String>();
+			map.add("account_number", numCompte);
+			String url="http://operation-service/findAccount";
+			ResponseEntity<Account>response=restTemplate.postForEntity(url, map, Account.class);
+				System.out.println("Method is called "+numCompte);
+			return new ResponseEntity<Object>(response,HttpStatus.OK);
+		}
+	
+	
+}
+
+
+class Account {
+	String accountNumber;
+	double balance;
+	String currency;
+	boolean active;
+	Date date;
+	String client;
+
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
+	}
+
+}
+
+
+
+class Deposit{
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public Date getOperationDate() {
+		return operationDate;
+	}
+	public void setOperationDate(Date operationDate) {
+		this.operationDate = operationDate;
+	}
+	private long id;
+	private double amount;
+	private String accountNumber;
+	private Date operationDate;
+}
+
+class Transfert{
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public Date getOperationDate() {
+		return operationDate;
+	}
+	public void setOperationDate(Date operationDate) {
+		this.operationDate = operationDate;
+	}
+	public String getBeneficiaryNumber() {
+		return beneficiaryNumber;
+	}
+	public void setBeneficiaryNumber(String beneficiaryNumber) {
+		this.beneficiaryNumber = beneficiaryNumber;
+	}
+	private long id;
+	private double amount;
+	private String accountNumber;
+	private Date operationDate;
+	private String beneficiaryNumber;
+}
+class Withdrawal{
+	
+	private long id;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public Date getOperationDate() {
+		return operationDate;
+	}
+	public void setOperationDate(Date operationDate) {
+		this.operationDate = operationDate;
+	}
+	private double amount;
+	private String accountNumber;
+	private Date operationDate;
+
+}

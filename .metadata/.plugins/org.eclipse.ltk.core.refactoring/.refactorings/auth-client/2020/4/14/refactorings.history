@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;static&apos;&#x0A;- Original project: &apos;auth-client&apos;&#x0A;- Destination element: &apos;static&apos;&#x0A;- Original elements:&#x0A;     Form&#x0A;     assets&#x0A;     dataTables2&#x0A;     dataTables" description="Copy folders" element1="src/main/resources/static/Form" element2="src/main/resources/static/assets" element3="src/main/resources/static/dataTables2" element4="src/main/resources/static/dataTables" files="0" flags="589830" folders="4" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1586004032672" target="/covidApi/src/main/resources/static" units="0" version="1.0"/>
+</session>

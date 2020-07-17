@@ -1,0 +1,12 @@
+package com.test;
+
+public class Test {
+
+	
+	public static void main(String[] args) {
+		String chaine="WILKI";
+		
+		if(chaine.equals("")) System.out.println("Chaine vide");
+		else System.out.println("La valeur est: "+chaine);
+	}
+}

@@ -1,0 +1,65 @@
+ 
+ <aside>
+ <nav class="sidebar sidebar-offcanvas" id="sidebar" style="position:fixed">
+   <ul class="nav">
+	
+          <li class="nav-item nav-profile" style="padding-left: 10px;padding-right: -10px">
+         
+         <br/><br/><br/><br/>
+			  <a href="#" class="nav-link">
+				<div class="profile-image">
+				  <img class="img-xs rounded-circle" th:src="@{getImage(code=${''})}" src="../static/images/wilki.JPG" alt="profile image">
+				  <div class="dot-indicator bg-success"></div>
+				</div>
+				<div class="text-wrapper">
+				  <p class="profile-name"><label th:text="${lastname}"></label><label th:text="${firstname}"></label></p>
+			<!-- 	  <p class="designation" >The PDG</p> -->
+				</div>
+			  </a>
+			</li> 
+			
+			
+			
+			<li class="nav-item nav-category">Transaction Management</li>
+			
+
+			<li class="nav-item">
+			  <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+				<i class="menu-icon typcn typcn-coffee"></i>
+				<span class="menu-title">Transaction</span>
+				<i class="menu-arrow"></i>
+			  </a>
+			  <div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/operation-service/saveForm}">Save transactions</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/operation-service/alldepositsForm}">All the Deposits</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/operation-service/alltransfertsForm}">All the transferts</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/operation-service/allwithdrawalsForm}">All the withdrawals</a>
+				  </li>
+				</ul>
+			  </div>
+			</li>
+			
+
+			
+			
+			
+	<li class="nav-item nav-category"></li>
+	
+		<li class="nav-item">
+			  <a class="nav-link" href="#">
+				<i class="menu-icon typcn typcn-document-text"></i>
+				<span class="menu-title">Sign out</span>
+			  </a>
+			</li>
+	</ul>
+	</nav>
+ 
+  </aside>

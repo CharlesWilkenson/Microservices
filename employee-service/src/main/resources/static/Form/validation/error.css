@@ -1,0 +1,17 @@
+
+label.error,
+.required {
+    font-size: 14px;
+    color: red;
+}
+
+
+.my-error-class {
+    color:#FF0000;  /* red */
+     font-size: 14px;
+    color: red;
+}
+.my-valid-class {
+    color:#00CC00; /* green */
+}
+	

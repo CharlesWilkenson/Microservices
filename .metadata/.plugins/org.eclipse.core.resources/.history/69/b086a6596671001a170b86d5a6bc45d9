@@ -1,0 +1,129 @@
+package com.employeeservice.rest;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.security.Principal;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.employeeservice.entities.Employee;
+import com.employeeservice.entities.Salary;
+import com.employeeservice.services.Services;
+
+@Controller
+public class IndexController {
+
+ //private final Logger logger = LoggerFactory.getLogger(IndexController.class);
+
+	@Autowired
+	private Services dao;
+	private String code;
+	private	String lastname;
+	private	String firstname;
+	private	String email;
+	byte[]photo;
+	
+		@RequestMapping(value = "/employeeHomePage")
+public String employeeHomePage(Principal principal,Model model) {
+	String userInfo=principal.getName();
+	//String role=principal.
+	List<Employee>empl=dao.findByEmail(userInfo);
+	for(Employee em:empl) {
+			/*
+			 * session.setAttribute("lastname", em.getLastname());
+			 * session.setAttribute("firstname", em.getFirstname());
+			 * session.setAttribute("email", principal.getName());
+			 * session.setAttribute("code", em.getCode());
+			 */
+		 
+		 code=em.getCode();
+		 lastname=em.getLastname();
+		 firstname=em.getFirstname();
+		 email=em.getEmail();
+		 photo=em.getPhoto();
+		// System.out.println("SESSION INFO1-LASTNAME: "+(String) session.getAttribute("lastname")+" FIRSTNAME: "+(String) session.getAttribute("firstname"));
+	}
+           model.addAttribute("lastname", lastname);
+			model.addAttribute("firstname", firstname);
+			model.addAttribute("email", email);
+	return "EmployeeHomePage";
+}
+	
+		
+		 @RequestMapping(value = "/saveEmployeeform")
+		    public String saveEmployeForm(Principal principal,Model model, HttpSession session) {
+
+			 employeeHomePage(principal, model);
+		        return "saveEmploye";
+		    }
+		
+		
+	
+@GetMapping(value = "/getEmployeeImage", produces = MediaType.IMAGE_JPEG_VALUE)
+@ResponseBody
+public byte[] getImage() throws IOException {
+
+	ByteArrayInputStream b = null;
+	byte[] io = null;
+	try {
+	
+	//	Employee emp=dao.findEmploye(code);
+		byte[] picture = photo;
+		b = new ByteArrayInputStream(picture);
+
+		io = IOUtils.toByteArray(b);
+	} catch (Exception e) {
+
+	
+	}
+
+	return io;
+}
+
+	
+
+	 
+ @RequestMapping(value = "/searchEmployeeform")
+ public String searchEmployeForm(Principal principal, Model model) {
+	 employeeHomePage(principal, model);
+     return "searchEmploye";
+ }
+
+
+ @RequestMapping(value = "/listEmployeeform")
+ public String listEmployeForm(Principal principal,Model model) {
+	 List<Employee>employees=dao.findAllEmployes();
+	 employeeHomePage(principal, model);
+            	model.addAttribute("employees", employees);
+     return "listerEmploye";
+ }
+ 
+ 
+ @RequestMapping(value = "/searchSalaryform")
+ public String searchSalaryForm(Principal principal,Model model) {
+	 employeeHomePage(principal, model);
+     return "searchSalary";
+ }
+ 
+ 
+ @RequestMapping(value = "/listSalaryform")
+ public String listSalaryForm(Principal principal,Model model) {
+	 List<Salary>salaries=dao.allSalaries();
+	 employeeHomePage(principal, model);
+	 model.addAttribute("salaries", salaries);
+     return "listerSalaries";
+ }
+ 
+}

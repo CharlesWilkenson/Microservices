@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  
+  
+
+<head>
+	<title>WIKIBANK</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/header :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	    	<div class="col-md-9">
+		
+		  <div style="padding-left:10px;padding-right:80px;padding-top:70px">
+
+			  <div class="row">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">New Client</h3> </div>
+</div>
+			  	   <div class="signup-box " >
+<!--  <section id="main-content"> -->
+  <!-- <section id="main-content"> -->
+	  
+		<!-- page start-->
+ <form id="myForm" action="#" method="post" >
+			  		
+
+	  <!-- One "tab" for each step in the form: -->
+	  <div class="card col-md-12">
+				  <div class="card-body">
+	  	  <div style="text-align:center;margin-top:5px;" >
+	    <span class="step" >1</span>
+	    <span class="step">2</span>
+		 <span class="step">3</span>
+		
+	   
+	  </div>
+	  <br/>
+	  
+	  
+	  <div class="row">
+	  <div class="tab">
+
+
+  <h4 class="tcolor">Basic Information</h4>
+	
+		
+		<div class="row">
+		
+	
+						 <div class="col-md-4 mb-3">
+							   <b>Lastname</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="lastname" name="lastname"  placeholder="lastname" required>
+						</div>
+					</div>
+				  
+					</div>
+
+		
+					
+						 <div class="col-md-4 mb-3">
+							   <b>Firstname</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="firstname" name="firstname"  placeholder="firstname" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							   <b>Date of birth</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="dateBirth" name="dateBirth"  placeholder="Date of birth" required>
+						</div>
+					</div>
+				  
+					</div>
+		</div>
+		
+		
+		
+		
+		<div class="row">
+		
+		
+		  <div class="col-md-3">
+			  <b>Sex</b> 
+							  <div class="input-group">
+				          <span class="input-group-addon">
+							   <i class="material-icons">person</i>
+						  </span>
+						  <div class="form-control">
+						  <input type="radio" name="sex"id="male" value="Male" class="filled-in chk-col-pink" checked>
+						  Male
+						
+						 <input type="radio" id="female" name="sex" value="Female" class="filled-in chk-col-pink">
+						Female
+					</div>
+					</div> <br/>
+	  	</div>
+
+		
+					
+						 <div class="col-md-4 mb-3">
+							   <b>Citizenship</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="citizenship" name="citizenship"  placeholder="Citizenship" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							   <b>Social number</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="identification" name="identification"  placeholder="Id" required>
+						</div>
+					</div>
+				  
+					</div>
+		</div>
+		
+		
+		
+		
+		</div></div>
+		
+		
+		
+		
+	  <div class="row">
+	  <div class="tab">
+  <h4 class="tcolor">Adress</h4>
+	  <div class="row">
+		 <div class="col-md-4 mb-3">
+							 <b>City</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="city" name="city"  placeholder="City" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+						    <div class="col-md-4 mb-3">
+						  <b>Street</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="street" name="street"  placeholder="Street" required>
+						</div>
+					</div>
+				  
+					</div>
+				
+					
+						    <div class="col-md-4 mb-3">
+						<b>#</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="number" name="number"  placeholder="Number" required>
+						</div>
+					</div>
+				  
+					</div>
+
+	  	</div>
+
+		<h4 class="tcolor">Contact</h4>
+					 <div class="row">
+			<div class="col-md-4 mb-3">
+							  <b>Email</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">email</i>
+						</span>
+						<div class="form-line">
+							<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+						</div>
+					</div>
+				  
+					</div>
+							   
+
+		
+					
+					
+				    <div class="col-md-4 mb-3">
+							   <b>Phone</b>
+							  <div class="input-group">
+				         <span class="input-group-addon">
+						   <i class="material-icons">phone</i>
+						</span>
+						 <div class="form-line">
+						<input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number" data-mask="(___) ___-____"/>
+							</div></div>				  
+					</div>			
+
+</div>
+		
+		
+		
+		
+		
+		
+		</div>
+		
+		</div>	
+		
+	
+		
+ <div class="row">
+	  <div class="tab">
+
+
+  <div class="col-md-12">
+	  
+
+						<h4 class="tcolor">Account information</h4>
+						 <div class="row">
+						 
+							   <div class="col-md-4 mb-3">
+							  <b>Account Type</b> 
+							  <div class="input-group">
+				    
+						  <div class="form-control">
+						  <input type="radio" name="accountType" value="saving" onchange="showCash('formCash')" class="filled-in chk-col-pink" >
+						  Saving account
+						
+						 <input type="radio" name="accountType" value="checking" onchange="showCheque('formCheque')"  class="filled-in chk-col-pink">
+						Checking account
+					</div>
+					</div>
+				 </div>
+						 
+						</div> 
+						
+						
+						
+					    <div class="col-md-4 mb-3">
+						<b>Balance</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="balance" name="balance"  placeholder="Balance" required="required">
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							  <b>Currency</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+						<select class="form-control" name="currency">
+						 <option value=""hidden>Currency</option>
+						
+						<option value="Euro">Euro</option>
+				
+						<option value="US">US</option>
+						
+						</select>
+						
+						</div>
+					</div>
+				  
+					</div>
+					
+			
+					
+					
+						
+						
+					    <div class="col-md-4 mb-3" style="display:none" id="formCheque">
+						<b>Decouvert</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="decouvert" name="decouvert"  placeholder="decouvert" required="required">
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						    <div class="col-md-4 mb-3"   style="display:none" id="formCash">
+						<b>rate</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="rate"  name="rate"  placeholder="rate" >
+						</div>
+					</div>
+				  
+					</div>
+			
+				
+
+
+	  	</div></div>
+		
+		
+		
+	  <!-- Circles which indicates the steps of the form: -->
+	  <div style="text-align:center;margin-top:0px;">
+	    <!-- <span class="step">1</span>
+	    <span class="step">2</span> -->
+		<button type="button" class="previous btncolor">Previous</button>
+	      	<button type="button" class="next btncolor">Next</button>
+			<button type="button" class="submit btncolor" id="btnSave">Save</button>
+	        <span class="input-group-addon"id="ajaxLoader" style="padding-top:4px;display:none" ><img th:src="@{/images/ajaxLoader.gif}"/></span>
+                    
+	  </div>
+		</div>
+				
+		
+		</div></div>
+		
+	  </form>
+			  
+
+		 
+
+</div>
+
+
+		
+	  </div>
+	  
+	  </div>
+	
+
+
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+$('#myForm').on('submit',function(e){
+	 var form = $('#myForm')[0];
+	   var data = new FormData(form);
+	 $('#ajaxLoader').show();
+   
+e.preventDefault();
+$.ajax({
+type:'post',
+url:'/client-service/saveClient',
+data:data,
+//cache:false,
+dataType:'json',
+processData: false,
+contentType: false,
+//timeout: 1000000,
+success:function(response){
+
+	runNotify({
+        type: 'notify',     
+        message: 'New client has been created successfuly!  code:'+response,
+        levelMessage: 'success'
+        });
+	 $('#ajaxLoader').hide();
+	//reset();
+},
+error:function(err){
+alert(err.responseText);
+	runNotify({
+    type: 'notify',    
+    message: 'Fail to save new client!'+err.responseText,
+    levelMessage: 'error'
+    });
+	 $('#ajaxLoader').hide();
+}
+
+	
+});
+
+	});
+});
+
+
+
+function reset(){
+  	 
+	$('#code').val("");
+	$('#lastname').val("");
+	$("#firstname").val("");
+	$("#sex").prop("checked") ? true : false;
+	$("#dateBirth").val("");
+	$("#placeBirth").val("");
+    $("#citizenship").val("");
+	$("#preview").val("");
+	$("#email").val("");
+	$("#phone").val("");
+	$("#identification").val("");
+
+	$("#adress_id").val("");
+	$("#city").val("");
+$("#street").val("");
+$("#number").val("");
+
+$("#currency").val("");
+$("#balance").val("");
+$("#rate").val("");
+$("#decouvert").val("");
+
+		}
+
+
+
+
+
+function showCash (box) {
+	 var chboxs1 = document.getElementById("formCash").style.display;
+	var chboxs = document.getElementById("formCheque").style.display;
+
+	     if(chboxs1=="none"){
+	  
+		    document.getElementById("formCash").style.display = "block";
+					 document.getElementById("formCheque").style.display = "none";
+		  }
+	     if(chboxs1=="block"){
+	  
+		      document.getElementById("formCash").style.display = "none";
+			     document.getElementById("formCheque").style.display = "block";
+		  }
+	 document.getElementById(box).style.display = vis;
+	}
+
+
+	function showCheque (box) {
+	 var chboxs1 = document.getElementById("formCash").style.display;
+		    var chboxs = document.getElementById("formCheque").style.display;
+		
+		        if(chboxs=="none"){
+		     
+				 document.getElementById("formCash").style.display = "none";
+				   document.getElementById("formCheque").style.display = "block";
+				 }
+		        if(chboxs=="block"){
+		  
+				 document.getElementById("formCheque").style.display = "none";
+				 	    document.getElementById("formCash").style.display = "block";
+				 }
+		    document.getElementById(box).style.display = vis;
+		}
+</script>
+</body>
+</html>
+
+
+		
+		
+	
+	

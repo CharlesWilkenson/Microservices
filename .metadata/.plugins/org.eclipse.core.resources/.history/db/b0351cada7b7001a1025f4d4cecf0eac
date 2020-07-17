@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery multiStepForm Plugin Demo</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/header :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	  
+
+	  <div class="col-md-2" style="margin-top:130px;text-align:center">
+				     <div class="card profile-card" >
+						<div class="profile-header">&nbsp;</div>
+						<div class="profile-body">
+						
+							<div class="image-area" >
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+						<div class="fileupload-new " >
+							
+					<img id="preview" th:src="@{/assets/images/faces/noimage.jpg}" src="../static/assets/images/faces/noimage.jpg" /><br/>
+    <input type="file" id="image" name="image" style="display: none;"/>
+    <a href="javascript:changeProfile()">Choose</a> |
+    <a style="color: red" href="javascript:removeImage()">Remove</a>
+							   						
+					<!-- 	<br/>
+					Choose a photo -->
+							</div>
+						</div>
+						</div>
+					   
+					</div>
+
+			  </div>
+	  	</div>
+
+	    
+	
+
+        </div>
+        <br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+   
+   
+
+	 $('#myForm').on('submit', function (e) {
+      	 var form = $('#myForm')[0];
+      	$('#ajaxLoader').show();
+           var data = new FormData(form);
+        e.preventDefault();
+
+        $.ajax({
+      	  url: '/employee-service/saveEmployee',
+      	  type: "post",
+      	  cache:false,
+            enctype: 'multipart/form-data',
+            data: data,
+     
+            // prevent jQuery from automatically transforming the data into a query string
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 1000000,
+          success: function (data) {
+        		runNotify({
+                    type: 'notify',
+                    message: 'Employee saved successfuly!'+data.code ,
+                    levelMessage: 'success'
+                    });
+        		reset();
+        		$('#ajaxLoader').hide();
+        		
+          },
+          error:function(){
+        		runNotify({
+                    type: 'notify',
+                    message: 'Failed to save new employee!',
+                    levelMessage: 'error'
+                    });
+        		$('#ajaxLoader').hide();
+          }
+        });
+
+      });
+    
+    
+    
+  });
+
+
+  
+  
+  
+
+function reset(){
+  	 
+	$('#code').val("");
+	$('#lastname').val("");
+	$("#firstname").val("");
+	$("#sex").prop("checked") ? true : false;
+	$("#dateBirth").val("");
+	$("#placeBirth").val("");
+    $("#citizenship").val("");
+	$("#preview").val("");
+	$("#maritalStatus").prop("checked") ? true : false;
+	$("#email").val("");
+	$("#phone").val("");
+
+	$("#fonction").val("");
+	$("#department").val("");
+	$("#type").val("");
+	$("#identification").val("");
+
+
+	$("#adress_id").val("");
+	$("#city").val("");
+$("#street").val("");
+$("#number").val("");
+
+$("#salary_id").val("");
+$("#net_salary").val("");
+$("#gross_salary").val("");
+$("#taux").val("");
+
+
+
+
+		}
+
+</script>
+</body>
+</html>
+
+
+		
+		
+	
+	

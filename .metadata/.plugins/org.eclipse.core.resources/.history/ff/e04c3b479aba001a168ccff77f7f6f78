@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery multiStepForm Plugin Demo</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/headerSearch :: header"></div>
+	  
+	<div class="row">
+	  
+	 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+<div class="col-md-9" style="margin-top:130px;text-align:center;padding-right:80px">
+
+		
+		 	  <div style=" margin-left:30px ;margin-right:105px;padding-top:70px">
+			  <div class="row">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">Search/Update salary</h3> </div>
+</div>
+
+			  	   <div class="signup-box " >
+
+ <form id="myForm" action="#" method="post" >
+			  		
+
+	  <!-- One "tab" for each step in the form: -->
+	  <div class="card col-md-12">
+				  <div class="card-body">
+	  
+	<div class="row">
+	<p><span>  </span> <span><label id="lastname"></label>	  </span>	
+    </p>
+	
+	
+	
+	<span> <label id="firstname"></label> </span>
+	
+	</div>
+	 	
+	
+
+  <h4 class="tcolor">Salary</h4>
+	  <div class="row">
+		 <div class="col-md-4 mb-3">
+							   <b>Gross salary</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="gross_salary" name="gross_salary"  placeholder="Gross salary" required>
+						</div>
+					</div>
+				  
+					</div>
+						<input type="hidden" class="form-control" name="code" id="code" placeholder="code" required autofocus>
+						<input type="hidden" class="form-control" name="salary_id" id="salary_id" placeholder="code" required autofocus>
+					
+					
+						      <div class="col-md-4 mb-3">
+							   <b>Taux</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="taux" name="taux"  placeholder="taux" required>
+						</div>
+					</div>
+				  
+					</div>
+	    
+					
+					
+				    <div class="col-md-4 mb-3">
+							   <b>Net salary</b>
+							  <div class="input-group">
+				         <span class="input-group-addon">
+						   <i class="material-icons">phone</i>
+						</span>
+						 <div class="form-line">
+						<input type="text" class="form-control" id="net_salary" name="net_salary" placeholder="Net salary" />
+							</div></div>				  
+					</div>			
+
+</div>
+		 <div id="btngroup" style="text-align:left;display: none">
+	 
+			<button type="button" class="submit btncolor" id="btn-search">Update</button>
+	     <span class="input-group-addon"id="ajaxLoader1" style="padding-top:4px;display:none" ><img th:src="@{/images/ajaxLoader1.gif}"/></span>
+                    
+		</div>
+		</div>
+			 </div>
+		
+	  </form>
+			  
+
+		
+
+	
+</div>
+
+	
+	
+	  <!-- partial:partials/_footer.html -->
+	
+		<!-- main-panel ends -->
+		
+	  </div>
+	  
+	  </div>
+
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+<script type="text/javascript">
+
+
+
+  //Add a JQuery click listener to our search button.
+    $(document).ready(function(){
+
+       // Fetch all records
+       $('#btn_search').click(function(e){
+    	   $('#ajaxLoader1').show();
+     e.preventDefault();
+
+
+        
+      //Carry out a GET Ajax request using JQuery
+      $.ajax({
+          //The URL of the PHP file that searches MySQL.
+             url: '/employee-service/searchSalary',
+             type: 'get',
+             cache:false,
+             data: $('#searchEmploye').serialize(),
+             success: function(returnData){
+
+   if(returnData===""){
+   	runNotify({
+        type: 'notify',
+        message: 'No salary for this employee!',
+        levelMessage: 'warning'
+        });
+   	$('#ajaxLoader1').hide();
+   	$('#btngroup').hide();
+}else{
+
+$("#lastname").text(returnData.lastname+" ");
+$("#firstname").text(" "+returnData.firstname);
+	
+	$("#salary_id").val(returnData.salary.salary_id);
+	$("#net_salary").val(returnData.salary.net_salary);
+	$("#gross_salary").val(returnData.salary.gross_salary);
+	$("#taux").val(returnData.salary.taux);
+$('#btngroup').show();
+$('#ajaxLoader1').hide();
+
+
+}
+   
+          },
+      
+      error:function(){
+      	runNotify({
+              type: 'notify',
+              message: 'Employee not found!',
+              levelMessage: 'error'
+              });
+      	
+      }
+      });
+  });
+
+
+
+       $('#myForm').on('submit', function (e) {
+      	 var form = $('#myForm')[0];
+      	$('#ajaxLoader1').show();
+           var data = new FormData(form);
+        e.preventDefault();
+
+        $.ajax({
+      	  url: '/employee-service/updateSalary',
+      	  type: "put",
+      	  cache:false,
+            data: data,
+     
+            // prevent jQuery from automatically transforming the data into a query string
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 1000000,
+          success: function () {
+        		runNotify({
+                    type: 'notify',
+                    message: 'Salary has been updated successfuly!',
+                    levelMessage: 'success'
+                    });
+        		reset();
+        		$('#ajaxLoader1').hide();
+        		
+          },
+          error:function(){
+        		runNotify({
+                    type: 'notify',
+                    message: 'Failed to update salary!',
+                    levelMessage: 'error'
+                    });
+        		$('#ajaxLoader1').hide();
+          }
+        });
+
+      });
+
+
+       function reset(){
+  	   	 
+  	$('#code').val("");
+   	$("#salary_id").val("");
+   	$("#net_salary").val("");
+   	$("#gross_salary").val("");
+   	$("#taux").val("");
+   	$('#btngroup').hide();
+ 
+      		}
+
+    });
+
+
+
+
+</script>
+</body>
+</html>
+
+
+		
+		
+	
+	

@@ -1,0 +1,57 @@
+<footer>
+
+<div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                             Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div> -->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">Copyright © 2018 Concept. All rights reserved</a>
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <!-- jquery 3.3.1 -->
+    <script th:src="@{/assets2/vendor/jquery/jquery-3.3.1.min.js}" src="../static/assets2/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script th:src="@{/assets2/vendor/bootstrap/js/bootstrap.bundle.js}" src="../static/assets2/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script th:src="@{/assets2/vendor/slimscroll/jquery.slimscroll.js}" src="../static/assets2/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script th:src="@{/assets2/libs/js/main-js.js}" src="../static/assets2/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script th:src="@{/assets2/vendor/charts/chartist-bundle/chartist.min.js}" src="../static/assets2/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="@{/assets2/vendor/charts/sparkline/jquery.sparkline.js}"></script>
+    <!-- morris js -->
+    <script th:src="@{/assets2/vendor/charts/morris-bundle/raphael.min.js}" src="../static/assets2/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script th:src="@{/assets2/vendor/charts/morris-bundle/morris.js}" src="../static/assets2/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script th:src="@{/assets2/vendor/charts/c3charts/c3.min.js}" src="../static/assets2/vendor/charts/c3charts/c3.min.js"></script>
+    <script th:src="@{/assets2/vendor/charts/c3charts/d3-5.4.0.min.js}" src="../static/assets2/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script th:src="@{/assets2/vendor/charts/c3charts/C3chartjs.js}" src="../static/assets2/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script th:src="@{/assets2/libs/js/dashboard-ecommerce.js}" src="../static/assets2/libs/js/dashboard-ecommerce.js"></script>
+
+    <script th:src="@{/dataTables2/matrix.tables.js}" src="../static/dataTables2/matrix.tables.js"></script>
+    <script th:src="@{/dataTables2/jquery.dataTables2.min.js}" src="../static/dataTables2/jquery.dataTables2.min.js"></script>
+
+<!-- modal2 -->
+<script th:src="@{/modal2/js/classie.js}" src="../static/modal2/js/classie.js"></script>
+<script th:src="@{/modal2/js/modal2Effects.js}" src="../static/modal2/js/modal2Effects.js"></script>
+
+<!-- for the blur effect -->
+<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+<script>
+    // this is important for IEs
+    var polyfilter_scriptpath = '/js/';
+</script>
+<script th:src="@{/modal2/js/cssParser.js}" src="../static/modal2/js/cssParser.js"></script>
+<script th:src="@{/modal2/js/css-filters-polyfill.js}" src="../static/modal2/js/css-filters-polyfill.js"></script>
+</footer>

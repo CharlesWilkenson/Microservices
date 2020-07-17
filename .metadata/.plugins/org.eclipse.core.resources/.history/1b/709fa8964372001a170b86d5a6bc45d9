@@ -1,0 +1,44 @@
+    <head>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+ <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/clientspace/assets/images/favicon.png}"
+     href="../static/clientspace/assets/images/favicon.png">
+    <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/clientspace/assets/plugins/bootstrap/css/bootstrap.min.css" th:href="@{/clientspace/assets/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../static/clientspace/css/style.css" th:href="@{/clientspace/css/style.css}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="../static/clientspace/css/colors/blue.css" th:href="@{/clientspace/css/colors/blue.css}"  id="theme" rel="stylesheet">
+   
+   
+   
+    <!-- Waves Effect Css -->
+    <link th:href="@{/clientspace/plugins/node-waves/waves.css}" href="../static/clientspace/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link  th:href="@{/clientspace/plugins/animate-css/animate.css}" href="..static/clientspace/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link th:href="@{/clientspace/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css}" href="..static/clientspace/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- Custom Css --><!-- 
+    <link href="css/style.css" rel="stylesheet"> -->
+	
+	  <link rel="stylesheet" th:href="@{/clientspace/transfert/scss/main.css}" href="../static/clientspace/transfert/scss/main.css">
+	
+	<script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+   </head>

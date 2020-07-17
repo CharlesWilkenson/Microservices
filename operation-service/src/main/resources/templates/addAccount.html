@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  
+  
+
+<head>
+	<title>WIKIBANK</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/headerAccount :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebarAccount :: aside"></div>
+ 
+	  </div>
+	    	<div class="col-md-9">
+		
+		  <div style="padding-left:10px;padding-right:80px;padding-top:70px">
+
+			  <div class="row">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">Add account</h3> </div>
+</div>
+			  	   <div class="signup-box " >
+<!--  <section id="main-content"> -->
+  <!-- <section id="main-content"> -->
+	  
+		<!-- page start-->
+<form id="myForm" action="#" method="POST" >
+			  		
+
+	  <!-- One "tab" for each step in the form: -->
+	  <div class="card col-md-12">
+				  <div class="card-body">
+
+                 
+
+						<h4 class="tcolor">Account information</h4>
+						 <div class="row">
+						 
+							   <div class="col-md-4 mb-3">
+							  <b>Account Type</b> 
+							  <div class="input-group">
+				    
+						  <div class="form-control">
+						  <input type="radio" name="accountType" value="saving" onchange="showCash('formCash')" class="filled-in chk-col-pink" >
+						  Saving account
+						
+						 <input type="radio" name="accountType" value="checking" onchange="showCheque('formCheque')"  class="filled-in chk-col-pink">
+						Checking account
+					</div>
+					</div>
+				 </div>
+						 
+						</div> 
+						
+						
+<input type="hidden" class="form-control" name="code" id="code" placeholder="code" required autofocus>
+											    <div class="col-md-4 mb-3">
+						<b>Balance</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="balance" name="balance"  placeholder="Balance" required="required">
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							  <b>Currency</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+						<select class="form-control" name="currency">
+						 <option value=""hidden>Currency</option>
+						
+						<option value="Euro">Euro</option>
+				
+						<option value="US">US</option>
+						
+						</select>
+						
+						</div>
+					</div>
+				  
+					</div>
+					
+			
+					
+					
+						
+						
+					    <div class="col-md-4 mb-3" style="display:none" id="formCheque">
+						<b>Decouvert</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="decouvert" name="decouvert"  placeholder="decouvert" required="required">
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						    <div class="col-md-4 mb-3"   style="display:none" id="formCash">
+						<b>rate</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="rate"  name="rate"  placeholder="rate" >
+						</div>
+					</div>
+				  
+					</div>
+
+	  	
+	  	
+	  	</div>
+		
+		    <div style="text-align:left; display: none;" id="btngroup">
+			<button type="button" class="submit btncolor" id="btnSave">Add account</button>
+	        <span class="input-group-addon"id="ajaxLoader" style="padding-top:4px;display:none" >
+	        <img th:src="@{/images/ajaxLoader.gif}"/></span>
+		</div>
+		<br/>
+	
+		</div>
+		
+	  </form>
+			  
+			  
+
+		 
+
+</div>
+
+
+		
+	  </div>
+	  
+	  </div>
+	
+
+
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	$('#btnSearch').click(function(e){
+		//display the spinner
+			$('#ajaxLoader').show();
+             var returnData;
+		     e.preventDefault();
+		      //Carry out a GET Ajax request using JQuery
+		      $.ajax({
+		          //The URL of the PHP file that searches MySQL.
+		             url: '/client-service/findClient',
+		             type: 'post',
+		             cache:false,
+		             data: $('#searchClient').serialize(),
+		             success: function(returnData){
+
+		        if(returnData===""){
+		    	runNotify({
+		        type: 'notify',
+		        message: 'Client not found!',
+		        levelMessage: 'warning'
+		        });
+		   	$('#ajaxLoader').hide();
+		$('#btngroup').hide();
+		}else{
+
+	$('#code').val(returnData.code);
+			
+           $('#btngroup').show();
+
+           $('#ajaxLoader').hide();
+	            	}
+		   
+		          },
+		      
+		      error:function(){
+
+		    	//display the spinner
+		    		$('#ajaxLoader').hide();
+		      	runNotify({
+		              type: 'notify',
+		              message: 'Internal server error!',
+		              levelMessage: 'error'
+		              });
+		      	 $('#btngroup').hide();
+		      }
+		      });
+
+
+
+		      $('#myForm').on('submit',function(e){
+		    		 var form = $('#myForm')[0];
+		    		 $('#ajaxLoader').show();
+		    	     var data = new FormData(form);
+		    	e.preventDefault();
+		    	$.ajax({
+		    	type:'post',
+		    	url:'/client-service/addAccount',
+		    	data:data,
+		    	cache:false,
+		    	dataType:'json',
+		    	processData: false,
+		    	contentType: false,
+		    	timeout: 1000000,
+		    	success:function(response){
+
+		    		runNotify({
+		    	        type: 'notify',     
+		    	        message: 'New account has been added successfuly!  code:'+response,
+		    	        levelMessage: 'success'
+		    	        });
+		    		 $('#ajaxLoader').hide();
+		    		reset(); $('#btngroup').hide();
+		    	},
+		    	error:function(err){
+		    		runNotify({
+		    	    type: 'notify',    
+		    	    message: 'Failed to add new account!',
+		    	    levelMessage: 'error'
+		    	    });
+
+		    	
+		    		 $('#ajaxLoader').hide();
+		    	}
+
+		    		
+		    	});
+
+		    		});
+		  });
+
+
+
+
+
+
+	function reset(){
+	  	 
+		$('#code').val("");
+		$("#number").val("");
+		$("#currency").val("");
+		$("#balance").val("");
+		$("#rate").val("");
+		$("#decouvert").val("");
+
+				}
+	
+	});
+
+
+</script>
+</body>
+</html>
+
+
+		
+		
+	
+	

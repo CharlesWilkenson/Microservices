@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  
+  
+
+<head>
+	<title>WIKIBANK</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/headerSearch :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebarAccount :: aside"></div>
+ 
+	  </div>
+	    	<div class="col-md-9">
+		
+		  <div style="padding-left:10px;padding-right:80px;padding-top:70px">
+
+			  <div class="row">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">Add account</h3> </div>
+</div>
+			  	   <div class="signup-box " >
+<!--  <section id="main-content"> -->
+  <!-- <section id="main-content"> -->
+<form id="myForm" action="#" method="POST" >
+			  		
+
+	  <!-- One "tab" for each step in the form: -->
+	  <div class="card col-md-12">
+				  <div class="card-body">
+	
+	
+		<h4 class="tcolor">Account Information</h4>
+		<div class="row">
+		
+		<div class="col-md-4 mb-3">
+							 <b>Account Number</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="accountNumber" name="accountNumber"  placeholder="Account Number" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						    <div class="col-md-4 mb-3">
+						<b>Account Type</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="Account_Type" name="class.simpleName"  placeholder="Account Type" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						    <div class="col-md-4 mb-3">
+						<b>Balance</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="balance" name="balance"  placeholder="Balance" required="required">
+						</div>
+					</div>
+				  
+					</div>
+		</div>
+		
+		
+		
+
+	  <div class="row">
+	  
+	  
+			    <div class="col-md-3 mb-3">
+						<b>Currency</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="currency" name="currency"  placeholder="currency" required="required">
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+					
+					
+				    <div class="col-md-3 mb-3">
+						<b>Active</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="active" name="active"  placeholder="Active" required="required">
+						</div>
+					</div>
+				  
+					</div>
+	  
+	  
+	              	<div class="col-md-3 mb-3">
+							  <b>Rate</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="rate" name="rate" placeholder="Rate" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+					         	<div class="col-md-3 mb-3">
+							  <b>Creation date</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">money</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="date" name="date" placeholder="Creation date" required>
+						</div>
+					</div>
+				  
+					</div>
+	
+	  	           </div>
+		
+   	       <div id="btngroups" style="text-align:center;margin-top:0px;display: none">
+		   <button type="button" class="submit btncolor" id="btn-search">Update</button>
+	       <span class="input-group-addon"id="ajaxLoader2" style="padding-top:4px;display:none" ><img th:src="@{/images/ajaxLoader.gif}"/></span>
+                    
+	     </div>
+						</div>  
+
+               </div>
+		
+
+	 </form>
+			  
+
+		 
+
+</div>
+
+
+		
+	  </div>
+	  
+	  </div>
+	
+
+
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+<script type="text/javascript">
+$(document).ready(function(){
+	  // Fetch all records    418805706
+
+
+	  
+	  
+      $('#btnSearchAccount').click(function(e){
+
+    		e.preventDefault();
+    		$('#ajaxLoader1').show();
+    		$.ajax({
+    		url:'/operation-service/findAccount',
+    		type:'post',
+    		cache:false,
+    		dataType:'json',
+    		data: $('#searchAccount').serialize(),
+    		success:function(returnData){
+    		if(returnData===null){
+    		 	runNotify({
+    		        type: 'notify',
+    		        message: 'Invalid Account number!',
+    		        levelMessage: 'warning'
+    		        });
+    		   	$('#ajaxLoader1').hide();
+    		
+    		}else{	
+    		    $('#account_type').val(returnData.account_type);
+    			$('#accountNumber').val(returnData.accountNumber);
+    			$('#active').val(returnData.active);
+    			$("#currency").val(returnData.currency);
+    			
+    			$("#balance").val(returnData.balance);
+    	
+    		    //$("#rate").val(returnData.rate);
+    	
+    			//$("#decouvert").val(returnData.decouvert);
+    			$("#date").val(returnData.date);
+    		
+    			$('#ajaxLoader1').hide();
+    		}
+    			
+    		},
+
+    		error:function(err){	
+    			 $('#ajaxLoader1').hide();		
+    		  runNotify({
+    		type: 'notify',
+    		 message: 'Internal server error!',
+    		 levelMessage: 'error'
+    		 });
+
+    		}
+    			
+    		});
+    			
+    		});
+});
+	  
+</script>
+</body>
+</html>
+
+
+		
+		
+	
+	

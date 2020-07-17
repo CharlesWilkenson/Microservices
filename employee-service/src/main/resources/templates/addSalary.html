@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  
+  
+
+<head>
+	<title>WIKIBANK</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/headerSearch  :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	    	<div class="col-md-9">
+		
+		  <div style="padding-left:10px;padding-right:80px;padding-top:70px">
+
+			  <div class="row">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">New Client</h3> </div>
+</div>
+			  	   <div class="signup-box " >
+<!--  <section id="main-content"> -->
+  <!-- <section id="main-content"> -->
+	  
+		<!-- page start-->
+ <form id="myForm" action="#" method="post" >
+			  		
+
+	  <!-- One "tab" for each step in the form: -->
+	  <div class="card col-md-12">
+				  <div class="card-body">
+	  
+		<div class="row">
+	<p><span>  </span> <span><label id="lastname"></label>	  </span>	
+    </p>
+	
+	
+	
+	<span> <label id="firstname"></label> </span>
+	
+	</div>
+		
+
+  <h4 class="tcolor">Salary</h4>
+	  <div class="row">
+		 <div class="col-md-4 mb-3">
+							   <b>Gross salary</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="gross_salary" name="gross_salary"  placeholder="Gross salary" required>
+						</div>
+					</div>
+				  
+					</div>
+						<input type="hidden" class="form-control"
+						 name="code" id="code" placeholder="code" >
+				
+					
+					
+						      <div class="col-md-4 mb-3">
+							   <b>Taux</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="taux" name="taux"  placeholder="taux" required>
+						</div>
+					</div>
+				  
+					</div>
+	    
+					
+					
+				    <div class="col-md-4 mb-3">
+							   <b>Net salary</b>
+							  <div class="input-group">
+				         <span class="input-group-addon">
+						   <i class="material-icons">phone</i>
+						</span>
+						 <div class="form-line">
+						<input type="text" class="form-control" id="net_salary" name="net_salary" placeholder="Net salary" />
+							</div></div>				  
+					</div>			
+
+</div>
+		 <div id="btngroup" style="text-align:left;display: none">
+	 
+			<button type="button" class="submit btncolor" id="btn-search">Add Salary</button>
+	     <span class="input-group-addon"id="ajaxLoader1" style="padding-top:4px;display:none" ><img th:src="@{/images/ajaxLoader1.gif}"/></span>
+                    
+		</div>
+		</div>
+			 </div>
+		
+	  </form>
+			  
+
+		 
+
+</div>
+
+
+		
+	  </div>
+	  
+	  </div>
+	
+
+
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+
+<script type="text/javascript">
+
+
+
+  //Add a JQuery click listener to our search button.
+    $(document).ready(function(){
+
+       // Fetch all records
+       $('#btn_search').click(function(e){
+    	   $('#ajaxLoader1').show();
+     e.preventDefault();
+
+
+        
+      //Carry out a GET Ajax request using JQuery
+      $.ajax({
+          //The URL of the PHP file that searches MySQL.
+             url: '/employee-service/searchSalary',
+             type: 'get',
+             cache:false,
+             data: $('#searchEmploye').serialize(),
+             success: function(returnData){
+
+   if(returnData===""){
+   	runNotify({
+        type: 'notify',
+        message: 'Code invalide!',
+        levelMessage: 'warning'
+        });
+   	$('#ajaxLoader1').hide();
+   	$('#btngroup').hide();
+}else{
+
+	$('#taux').val(returnData.salary.taux);
+	$('#gross_salary').val(returnData.salary.gross_salary);
+	$('#net_salary').val(returnData.salary.net_salary);
+	
+    $('#code').val(returnData.code);
+	$("#lastname").text(returnData.lastname+" ");
+	$("#firstname").text(" "+returnData.firstname);
+
+$('#btngroup').show();
+$('#ajaxLoader1').hide();
+
+
+}
+            },
+      
+      error:function(){
+      	runNotify({
+              type: 'notify',
+              message: 'Employee not found!',
+              levelMessage: 'error'
+              });
+      	
+      }
+      });
+  });
+
+
+
+       $('#myForm').on('submit', function (e) {
+      	 var form = $('#myForm')[0];
+      	$('#ajaxLoader1').show();
+           var data = new FormData(form);
+        e.preventDefault();
+
+        $.ajax({
+      	  url: '/employee-service/addSalary',
+      	  type: "post",
+      	  cache:false,
+            data: data,
+     
+            // prevent jQuery from automatically transforming the data into a query string
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 1000000,
+          success: function () {
+        		runNotify({
+                    type: 'notify',
+                    message: 'Salary has been added successfuly!',
+                    levelMessage: 'success'
+                    });
+        		reset();
+        		$('#ajaxLoader1').hide();
+        		
+          },
+          error:function(){
+        		runNotify({
+                    type: 'notify',
+                    message: 'Failed to add salary!',
+                    levelMessage: 'error'
+                    });
+        		$('#ajaxLoader1').hide();
+          }
+        });
+
+      });
+
+
+       function reset(){
+  	   	 
+  	$('#code').val("");
+   	$("#salary_id").val("");
+   	$("#net_salary").val("");
+   	$("#gross_salary").val("");
+   	$("#taux").val("");
+   	$('#btngroup').hide();
+ 
+      		}
+
+    });
+
+
+
+
+</script>
+</body>
+</html>
+
+
+		
+		
+	
+	

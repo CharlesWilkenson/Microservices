@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Service</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+	<style type="text/css">
+
+.preloader {
+    background-color: #fcfcfc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    top: 0;
+    left: 0;
+}
+
+.preloader span {
+    text-transform: none;
+    font-size: 34px
+}
+
+.preloader .preloader-img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+}
+
+@keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+        ;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-flicker {
+    -webkit-animation: flickerAnimation 2s infinite;
+    -moz-animation: flickerAnimation 2s infinite;
+    -o-animation: flickerAnimation 2s infinite;
+    animation: flickerAnimation 2s infinite;
+}
+
+	</style>
+	
+	
+	
+</head>
+<body >
+
+<!--     <div class="preloader">
+            <div class="preloader-img">
+                <span class="loading-animation animate-flicker"><img th:src="@{/image/loading.GIF}" src="../static/image/loading.GIF" /></span>
+            </div>
+        </div> -->
+        
+        
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/header :: header"></div>
+	  
+	<div class="row">
+	 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	  
+<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+		
+		 	   <div class="col-md-9" style="margin-top:130px;text-align:center;padding-right:80px">
+
+			  <div class="row">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">All Employees</h3> </div>
+</div>
+			  	   <div class="signup-box card" >
+            <div class="row clearfix">
+             <br> <br>  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    
+          
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table   class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                      <thead>
+                     <tr>
+                    <th>Gos Salary</th>
+                    <th>Net Salary</th>
+                    <th>taux</th>
+    
+        
+                  </tr>
+                </thead>
+                
+                         
+                    <tbody>
+                        
+                  
+             
+                   
+     <!--                <tr  class="gradeX" >
+                     
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td> 
+                  </tr> -->
+                                        
+                </tbody>
+                             	
+         <!--       <tbody>
+        
+                  </tr>
+                                        
+                                    </tbody> -->
+                                </table>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+
+
+	
+</div>
+
+	
+	
+	  <!-- partial:partials/_footer.html -->
+	
+		<!-- main-panel ends -->
+		
+	  </div>
+	  
+	  </div>
+	
+	
+
+
+
+
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+	
+	
+	<script type="text/javascript">
+
+          $(document).ready(function(){
+          $.ajax({
+
+           url: "/employee-service/allSalaries",
+           type: 'get',
+           dataType: 'json',
+           contentType: 'application/json',
+           cache:false,
+           timeout:600000,
+     
+           success: function (response) {
+              
+           var trHTML ;
+           $.each(response, function (i, item) {
+            trHTML +=
+            '<tr class="gradeX">'+
+            '<td>' + item.gross_salary+ '</td>'+
+            '<td>' + item.net_salary + '</td>'+
+            '<td>' + item.taux + '</td>'+
+
+            '</tr>';
+        });
+   // $('tbody').attr(trHTML);
+    $('tbody').append(trHTML);
+//$('trHTML').ppendTo($('#table'));
+
+        
+    }
+    });
+
+
+
+});
+
+
+			
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,92 @@
+        <aside>
+               <nav class="navbar navbar-expand-lg navbar-light">
+               <!--      <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+
+
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>mmm
+                    </button> -->
+
+                  
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+
+                           
+                            <li class="nav-divider" >
+                                    <i class="fa fa-fw fa-user"></i> CHARLES WILKENSON
+                            </li>
+                        
+                      
+
+                           
+                            
+                    <li class="nav-item">
+                           
+                            <a class="nav-link" href="/client-space-service/clientDashboard"><i class="fa fa-fw fa-home"></i>Home</a>
+                        </li>
+
+
+                        <li class="nav-divider">
+                                Activities
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
+                                    <i class="fa fa-fw fa-rocket"></i>My activities</a>
+                                <div id="submenu-2" class="collapse submenu" >
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/client-space-service/alldeposits">All deposits <span class="badge badge-secondary"></span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/client-space-service/allwithdrawals">All withdrawals</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/client-space-service/alltransferts">All transferts</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                        </li>
+
+                     
+                            <li class="nav-divider">
+                                    Balance
+                                </li>
+                         
+
+
+                                 <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
+                                                <i class="fa fa-dollar-sign"></i>My Balance</a>
+                                        <div id="submenu-3" class="collapse submenu" >
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                        <h2><sup>$</sup>45000 </h2> 
+                                                </li>
+                                            
+                                            </ul>
+                                        </div>
+                                                </li>
+
+
+                            <li class="nav-divider">
+                                    Transaction
+                                </li>
+                            <li class="nav-item  md-trigger" data-modal="modal-13">                                             
+                                    <a  href="#"  class="md-trigger nav-link" data-modal="modal-13"><i class="fa fa-fw fa-rocket"></i>Make a transfert</a>
+                                 </li>
+                  
+                            <li class="nav-divider">
+                                Close your session
+                            </li>
+                        
+                            <li class="nav-item">
+                           
+                                    <a class="nav-link" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                                </li>
+                    
+                        </ul>
+                    </div>
+                </nav>
+                
+                </aside>

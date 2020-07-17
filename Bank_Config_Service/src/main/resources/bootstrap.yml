@@ -1,0 +1,38 @@
+server:
+    port: 8888
+
+
+spring:
+  #application:
+   #     name: config-server
+  cloud:
+    config:
+     server:
+       git:
+          uri: https://github.com/CharlesWilkenson/service-config.git
+
+
+
+#eureka:
+    # enabled: true
+#  instance:
+#    leaseRenewalIntervalInSeconds: 1
+#    leaseExpirationDurationInSeconds: 2
+   #  client:
+   #    registerWithEureka: true
+   #    fetchRegistry: true
+    #   serviceUrl:
+    #     defaultZone: http://eureka-server:8761/eureka
+#    lease:
+#      duration: 5
+
+
+
+
+
+
+#security:
+ #    basic:
+  #     enabled: true
+   #  user:
+    #  password: admin

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery multiStepForm Plugin Demo</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/header :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	  
+
+	    	
+	    	   	<div class="col-md-9">
+		
+		
+			  <div style="padding-left:10px;padding-right:80px;padding-top:70px">
+			  <div class="row">
+             <div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">All deposits</h3> </div>
+                    </div>
+	
+			  	   <div class="signup-box card" >
+            <div class="row clearfix">
+             <br> <br>  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    
+          
+                        <div class="body">
+                            <div class="table-responsive">
+                                                             <table   class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                      <thead>
+                     <tr>
+                    <th>Account Number</th>
+                    <th>Amount</th>
+                    <th>Operation Date</th>
+
+                  </tr>
+                </thead>
+  
+                         
+                    <tbody>
+                                   <tr th:each="val:${deposits}" class="gradeX" >
+                  
+                    <td th:text="${val.account.accountNumber}"></td>
+                    <td th:text="${val.amount}"></td>
+              
+                <td th:text="${val.operationDate}"></td>
+               
+                  </tr>   
+                
+                </tbody>
+                     <tfoot>
+                     <tr>
+                    <th>Account Number</th>
+                    <th>Amount</th>
+                    <th>Operation Date</th>
+
+                  </tr>
+                </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+
+
+	
+</div>
+
+	
+	
+	  <!-- partial:partials/_footer.html dataTable js-exportable-->
+	
+		<!-- main-panel ends -->
+		
+	  </div>
+	  
+	  </div>
+	
+	
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+<!-- 	<script type="text/javascript">
+
+          $(document).ready(function(){
+          $.ajax({
+           url: "/operation-service/alldeposits",
+           type: 'get',
+           dataType: 'json',
+           contentType: 'application/json',
+           cache:false,
+           timeout:600000,   
+           success: function (response) {              
+           var trHTML ;
+           $.each(response, function (i, item) {
+            trHTML +=
+            '<tr class="gradeX">'+
+            '<td>' + item.account.accountNumber + '</td>'+
+            '<td>' + item.amount + '</td>'+
+            '<td>' + item.operationDate + '</td>'+
+           '</tr>';
+        });
+   // $('tbody').attr(trHTML);
+    $('tbody').append(trHTML);
+//$('trHTML').ppendTo($('#table'));      
+    }
+    });
+
+});
+
+		
+</script> -->
+
+
+</body>
+</html>
+
+
+		
+		
+	
+	

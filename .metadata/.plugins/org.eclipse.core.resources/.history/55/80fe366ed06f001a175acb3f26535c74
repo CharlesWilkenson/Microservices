@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+
+    <title>C </title>
+
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+<!-- <link  href="../static/dataTables/matrix-media.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+            <div class="dashboard-header">
+                       <div th:include="fragments/header :: header"></div>
+                </div>
+            <!-- ============================================================== -->
+            <!-- end navbar -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- left sidebar -->
+            <!-- ============================================================== -->
+            <div class="nav-left-sidebar sidebar-dark">
+                <div class="menu-list">
+                               <div th:include="fragments/sidebar :: aside"></div>
+                </div>
+            </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">All your withdrawals</h2>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashbord</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Client space</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+                    
+                    
+                    
+                  <div class="md-modal md-effect-13" id="modal-13">
+                        <div class="md-content">
+                               
+                            <h3> Balance:<sup>$</sup>99600 </h3>   
+                            <div>
+                                <p>Please enter your account number and the beneficiary account number:</p>
+                                <ul>
+                                    <form >
+                                        <div class="card">
+                                           
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Your account number" autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="form-control form-control-lg" type="number" name="email" required="" placeholder="The beneficiary account number" autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="form-control form-control-lg" type="number" name="email" required="" placeholder="The amount" autocomplete="off">
+                                                </div>
+                                          
+                                                <div class="form-group row pt-0">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                                                        <button class="btn btn-block btn-social btn-facebook " type="button">Make a transfert</button>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <!-- <div class="card-footer bg-white">
+                                                <p>Already member? <a href="#" class="text-secondary">Login Here.</a></p>
+                                            </div> -->
+                                        </div>
+                                    </form>
+                                    <button class="md-close">Close me!</button>
+                                </ul>
+                             
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <div class="ecommerce-widget">
+
+  
+
+            <div class="row">
+                            <!-- ============================================================== -->
+                            <!-- data table multiselects  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">All Withdrawals </h5>
+                                   </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                        
+                                        <table id="example3" class="table table-bordered data-table" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                               
+                                                        <th>Amount</th>
+                                                        <th>Transaction date</th>                                                 
+                                                      
+                                                    </tr>
+                                                </thead>
+                
+                         
+                                               <tbody>
+                                                 
+                                                </tbody>
+                                              <tfoot>
+                                                    <tr>
+                                                     
+                                                       <th>Amount</th>
+                                                        <th>Transaction date</th>
+                                                     
+                                                    </tr>
+                                                </tfoot> 
+ 
+                                               </table>
+                                   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end data table multiselects  -->
+                            <!-- ============================================================== -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+<div th:include="fragments/footer :: footer"></div>
+<script type="text/javascript">
+
+$(document).ready(function(){
+   $.ajax({
+
+   	url:'/client-space-service/myWithdrawals',
+       type: 'get',
+       dataType: 'json',
+       contentType: 'application/json',
+       cache:false,
+       timeout:600000, 
+    success: function (response) {
+    var trHTML ;
+    $.each(response, function (i, item) {
+        trHTML +=
+        '<tr><td>' + item.amount + 
+        '</td><td>' + item.operationDate +'</td></tr>';
+    });
+  $('tbody').append(trHTML);
+//$('trHTML').ppendTo($('#table'));
+
+    
+}
+});
+
+
+});
+</script>
+</body>
+ 
+</html>

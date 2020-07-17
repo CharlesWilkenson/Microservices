@@ -1,0 +1,98 @@
+ 
+ <aside>
+ <nav class="sidebar sidebar-offcanvas" id="sidebar" style="position:fixed">
+   <ul class="nav">
+	
+     
+          <li class="nav-item nav-profile" >
+         
+         <br/><br/><br/><br/>
+			  <a href="#" class="nav-link">
+				<div class="profile-image">
+				  <img class="img-xs rounded-circle" th:src="@{getEmployeeImage(code=${''})}"  src="../static/images/wilki.JPG" alt="profile image">
+				  <div class="dot-indicator bg-success"></div>
+				</div>
+				<div class="text-wrapper">
+				  <p class="profile-name"><label th:text="${lastname}"></label><label th:text="${firstname}"></label></p>
+				  <p class="designation" >The PDG</p>
+				</div>
+			  </a>
+			</li> 
+			
+			
+			
+			
+			<li class="nav-item nav-category">Employee Management</li>
+		
+			<li class="nav-item">
+			  <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+				<i class="menu-icon typcn typcn-coffee"></i>
+				<span class="menu-title">Employee</span>
+				<i class="menu-arrow"></i>
+			  </a>
+			  <div class="collapse" id="ui-basic">
+			<ul class="nav flex-column sub-menu">
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/employee-service/saveEmployeeform}">Save</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/employee-service/searchEmployeeform}">Search/Update</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/employee-service/listEmployeeform}">List</a>
+				  </li>
+				</ul>
+			  </div>
+			</li>
+			
+			
+<li class="nav-item nav-category">Salary Management</li>
+			
+			<li class="nav-item">
+			  <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+				<i class="menu-icon typcn typcn-document-add"></i>
+				<span class="menu-title">Salary</span>
+				<i class="menu-arrow"></i>
+			  </a>
+			 <div class="collapse" id="auth">
+			<ul class="nav flex-column sub-menu">
+				
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/employee-service/searchSalaryform}">Add/Update</a>
+				  </li>
+				  
+				  <!--  <li class="nav-item">
+					<a class="nav-link" th:href="@{/employee-service/addSalaryform}">Add Salary</a>
+				  </li> -->
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/employee-service/listSalaryform}">List</a>
+				  </li>
+				  
+				</ul>
+			  </div>
+			</li>
+			
+	
+	<!-- 		
+			<li class="nav-item nav-category"></li>
+			
+				<li class="nav-item">
+			  <a class="nav-link" th:href="@{/client-service/saveClientForm}">
+				<i class="menu-icon typcn typcn-document-text"></i>
+				<span class="menu-title">Go to the client service</span>
+			  </a>
+			</li> -->
+			
+			
+	<li class="nav-item nav-category"></li>
+	
+		<li class="nav-item">
+			  <a class="nav-link" href="#">
+				<i class="menu-icon typcn typcn-document-text"></i>
+				<span class="menu-title">Sign out</span>
+			  </a>
+			</li>
+	</ul>
+	</nav>
+ 
+  </aside>

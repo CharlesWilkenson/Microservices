@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Operation service</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/header:: header"></div>
+	  
+	<div class="row">
+	  
+		  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	  
+
+	    	<div class="col-md-9 dashboard-main-wrapper">
+		
+		    <div style="padding-left:10px;padding-right:30px;padding-top:70px">
+
+			 
+			  	   <div class="signup-box " >
+
+		  		
+      <div class="row">
+
+
+
+
+                            <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="section-block" id="cardaction">
+                                    <h3 class="section-title" style="color: rgba(70,71,135,0.84)">Save Transactions</h3>
+                                    <p><!-- This page is for saving Transactions that can affect clients account. --></p>
+                                </div>
+                            </div>
+            
+             
+                          
+                            
+                            <div class="col-xl-10 col-lg-11 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-header d-flex">
+                                        <h4 class="card-header-title ">Transactions</h4>
+                                        <div class="toolbar card-toolbar-tabs  ml-auto">
+                                            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="btnd" data-toggle="pill" href="#" role="tab" aria-controls="pills-home" aria-selected="true">Deposit</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="btnw" data-toggle="pill" href="#" role="tab" aria-controls="pills-profile" aria-selected="false">Withdrawal</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="btnt" data-toggle="pill" href="#" role="tab" aria-controls="pills-contact" aria-selected="false">Transfert</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content mb-12" id="pills-tabContent">
+                                            <div  id="deposit"  style="display:block;" role="tabpanel" aria-labelledby="pills-home-tab">
+                                          <form action="" method="post" id="depositForm">
+				<div class="card-body">             
+                <h4 class="tcolor">Deposit</h4>
+	            <div class="row">
+		        <div class="col-md-6 mb-3">
+							   <b>Account number</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+						<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+						<input type="text" class="form-control" id="account_number" name="account_number"  placeholder="Account number" required>
+						</div>
+					</div>				  
+					</div>
+					
+					
+						      <div class="col-md-6 mb-3">
+							   <b>Amount</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="amount" name="amount"  placeholder="Amount" required>
+						
+					</div>
+					</div>				  
+					</div>
+                	</div>
+	
+		 
+		     <a id="btnVerifD" href="#" class="btn btn-primary">Verify</a>
+		     <a style="display:none" id="btnSaveDeposit" href="#" class="btn btn-primary">Save deposit</a>
+	        <span class="input-group-addon"id="ajaxLoader" style="padding-top:4px;display:none">
+	        <img th:src="@{/images/ajaxLoader.gif}"/></span>
+             	
+		</div>
+		</form>
+                                            </div>
+                                            
+                                            <div  id="withdraw"  style="display:none" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                            <form action="" method="post" id="withdrawalForm">
+				  <div class="card-body">
+	  	
+           
+                <h4 class="tcolor">Withdrawal</h4>
+	            <div class="row">
+		        <div class="col-md-6 mb-3">
+							   <b>Account number</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+								<input type="text" class="form-control" id="account_number" name="account_number"  placeholder="Account number" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-6 mb-3">
+							   <b>Amount</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+								<input type="text" class="form-control" id="amount" name="amount"  placeholder="Amount" required>
+					</div>
+					</div>
+				  
+					</div>
+	    		
+
+
+	
+		</div>
+	
+		
+		     <a id="btnVerifW" href="#" class="btn btn-primary">Verify</a>
+		     <a style="display:none" id="btnSavewithdrawal" href="#" class="btn btn-primary">Save withdrawal</a>
+	        <span class="input-group-addon"id="ajaxLoader" style="padding-top:4px;display:none">
+	        <img th:src="@{/images/ajaxLoader.gif}"/></span>
+	
+		
+		
+		</div>
+		</form>
+                                            </div>
+                                            
+                                            <div  id="transfert"  style="display:none" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                          <form action="" method="post" id="transfertForm">
+				  <div class="card-body">
+	  	
+                <h4 class="tcolor">Transfert</h4>
+	            <div class="row">
+		        <div class="col-md-4 mb-3">
+							   <b>Account number</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="account_number" name="account_number"  placeholder="Account number" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							   <b>Beneficiary number</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+					<input type="text" class="form-control" id="beneficiary_number" name="beneficiary_number"  placeholder=" Beneficiary number" required>
+						
+					</div>
+				  </div>
+					</div>
+	    
+					
+					
+				    <div class="col-md-4 mb-3">
+							   <b>Amount</b>
+							  <div class="input-group">
+				         <span class="input-group-addon">
+						   <i class="material-icons">phone</i>
+						</span>
+						 <div class="form-line">
+									<input type="text" class="form-control" id="amount" name="amount"  placeholder="Amount" required>
+							</div></div>				  
+					</div>			
+
+		
+		</div>
+             <a id="btnVerifT" href="#" class="btn btn-primary">Verify</a>
+		     <a style="display:none" id="btnSavetransfert" href="#" class="btn btn-primary">Save Transfert</a>
+	        <span class="input-group-addon"id="ajaxLoader" style="padding-top:4px;display:none">
+	        <img th:src="@{/images/ajaxLoader.gif}"/></span>
+	 
+		
+		</div>
+		
+		</form>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+		</div>
+		
+		</div>
+		
+		
+			</div>
+	  </div>
+	  
+	  </div>
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+$('#btnVerifD').click(function(e){
+
+e.preventDefault();
+$('#ajaxLoader').show();
+$.ajax({
+url:'/operation-service/findAccount',
+type:'post',
+cache:false,
+dataType:'json',
+data: $('#depositForm').serialize(),
+success:function(data){
+if(data===null){
+ 	runNotify({
+        type: 'notify',
+        message: 'Invalid Account number!',
+        levelMessage: 'warning'
+        });
+   	$('#ajaxLoader').hide();
+	$('#btnSaveDeposit').hide();
+}else{	
+
+	$('#accountNumber').val(data.account_number);
+	$('#btnVerifD').hide();
+	$('#btnSaveDeposit').show();
+	$('#ajaxLoader').hide();
+}
+	
+},
+
+error:function(err){	
+	 $('#ajaxLoader').hide();		
+  runNotify({
+type: 'notify',
+ message: 'Internal server error!'+err.responseText,
+ levelMessage: 'error'
+ });
+
+}
+	
+});
+	
+});
+
+
+$('#btnVerifW').click(function(e){
+
+	e.preventDefault();
+	$('#ajaxLoader').show();
+	$.ajax({
+	url:'/operation-service/findAccount',
+	type:'post',
+	cache:false,
+	dataType:'json',
+	data: $('#withdrawalForm').serialize(),
+	success:function(data){
+	if(data===null){
+	 	runNotify({
+	        type: 'notify',
+	        message: 'Invalid Account number!',
+	        levelMessage: 'warning'
+	        });
+	   	$('#ajaxLoader').hide();
+		$('#btnSavewithdrawal').hide();
+	}else{	
+
+		$('#accountNumber').val(data.account_number);
+		$('#btnVerifW').hide();
+		$('#btnSavewithdrawal').show();
+		$('#ajaxLoader').hide();
+	}
+		
+	},
+
+	error:function(err){	
+		 $('#ajaxLoader').hide();		
+	  runNotify({
+	type: 'notify',
+	 message: 'Internal server error!',
+	 levelMessage: 'error'
+	 });
+
+	}
+		
+	});
+		
+	});
+
+
+	$('#btnVerifT').click(function(e){
+
+	e.preventDefault();
+	$('#ajaxLoader').show();
+	$.ajax({
+	url:'/operation-service/findAccount',
+	type:'post',
+	cache:false,
+	dataType:'json',
+	data: $('#transfertForm').serialize(),
+	success:function(data){
+	if(data===null){
+	 	runNotify({
+	        type: 'notify',
+	        message: 'Invalid Account number!',
+	        levelMessage: 'warning'
+	        });
+	   	$('#ajaxLoader').hide();
+		$('#btnSavetransfert').hide();
+	}else{	
+
+		$('#accountNumber').val(data.account_number);
+		$('#btnVerifT').hide();
+		$('#btnSavetransfert').show();
+		$('#ajaxLoader').hide();
+	}
+		
+	},
+
+	error:function(err){	
+		 $('#ajaxLoader').hide();		
+	  runNotify({
+	type: 'notify',
+	 message: 'Internal server error!',
+	 levelMessage: 'error'
+	 });
+
+	}
+		
+	});
+		
+	});
+
+
+
+	  $('#btnSaveDeposit').click(function(e){		 
+		     e.preventDefault();
+		     $('#ajaxLoader').show();
+		      //Carry out a GET Ajax request using JQuery
+		      $.ajax({
+		          //The URL of the PHP file that searches MySQL.
+		             url: '/operation-service/savedeposit',
+		             type: 'post',
+		             cache:false,
+		             data: $('#depositForm').serialize(),
+		             success: function(response){
+		            	 $('#ajaxLoader').hide();
+		            		runNotify({
+		  		              type: 'notify',
+		  		              message: 'successful transaction!',
+		  		              levelMessage: 'success'
+		  		              });
+		            		reset();
+		                      },
+		      
+		             error:function(err){	
+		    	   	 $('#ajaxLoader').hide();		
+		      	     runNotify({
+		             type: 'notify',
+		              message: ' transaction was not successful!',
+		              levelMessage: 'error'
+		              });		      	
+		      }
+		      });
+		  });
+
+
+
+	  $('#btnSavewithdrawal').click(function(e){
+		  $('#ajaxLoader').show();
+		     e.preventDefault();
+		      //Carry out a GET Ajax request using JQuery
+		      $.ajax({
+		          //The URL of the PHP file that searches MySQL.
+		             url: '/operation-service/savewithdrawal',
+		             type: 'post',
+		             cache:false,
+		             data: $('#withdrawalForm').serialize(),
+		             success: function(){
+
+		            		runNotify({
+		  		              type: 'notify',
+		  		              message: 'successful transaction!',
+		  		              levelMessage: 'success'
+		  		              });
+		            		  $('#ajaxLoader').hide();
+		            		  reset();
+		                      },
+		      
+		             error:function(){			
+		           	 runNotify({
+		              type: 'notify',
+		              message: ' transaction was not successful!',
+		              levelMessage: 'error'
+		              });
+		       	  $('#ajaxLoader').hide();
+		      }
+		      });
+		  });
+
+
+
+
+
+
+	  
+
+	  $('#btnSavetransfert').click(function(e){
+		  $('#ajaxLoader').show();
+		     e.preventDefault();
+		      //Carry out a GET Ajax request using JQuery
+		      $.ajax({
+		          //The URL of the PHP file that searches MySQL.
+		             url: '/operation-service/savetransfert',
+		             type: 'post',
+		             cache:false,
+		             data: $('#transfertForm').serialize(),
+		             success: function(){
+
+		            		runNotify({
+		  		              type: 'notify',
+		  		              message: 'successful transaction!',
+		  		              levelMessage: 'success'
+		  		              });
+		            		  $('#ajaxLoader').hide();
+		            		  reset();
+		                      },
+		      
+		      error:function(){			
+		      	runNotify({
+		              type: 'notify',
+		              message: ' transaction was not successful!',
+		              levelMessage: 'error'
+		              });
+		  	  $('#ajaxLoader').hide();
+		      }
+		      });
+		  });
+
+
+
+
+function reset(){
+    $("#account_number").val("");
+	$('#amount').val("");
+	$('#beneficiary_number').val("");
+	$('#ajaxLoader').hide();
+	$('#btnSaveDeposit').hide();
+	$('#btnSavewithdrawal').hide();
+	$('#btnSavetransfert').hide();
+	$('#btnVerifD').show();
+	$('#btnVerifW').show();
+	$('#btnVerifT').show();
+}
+
+
+	  
+
+
+	     $('#btnd').click(function(){
+	    	 reset();
+		  $('#btnd').css('color ','#4e73df');
+		  $('#deposit').fadeIn(1000);
+		  $('#withdraw').hide();
+		  $('#transfert').hide();
+		  });
+
+		  $('#btnw').click(function(){
+			  reset();
+		  $('#withdraw').fadeIn(1000);
+		  $('#deposit').hide();
+		  $('#transfert').hide();
+		  });
+
+		  $('#btnt').click(function(){
+			  reset();
+		  $('#transfert').fadeIn(1000);
+		  $('#withdraw').hide();
+		  $('#deposit').hide();
+
+		  });
+
+
+
+});
+	  
+</script>
+
+   
+</body>
+</html>
+
+
+		
+		
+	
+	

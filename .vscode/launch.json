@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProxyServiceApplication<auth-client>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.proxyservice.ProxyServiceApplication",
+            "projectName": "auth-client",
+            "args": ""
+        }
+    ]
+}

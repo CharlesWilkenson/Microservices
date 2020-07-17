@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;CovidRest.java&apos; to &apos;covidApi/src/main/java/covidapi&apos;&#x0A;- Original project: &apos;covidApi&apos;&#x0A;- Destination element: &apos;covidApi/src/main/java/covidapi&apos;&#x0A;- Original element: &apos;covidapi.CovidRest.java&apos;" description="Copy compilation unit" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;covidapi" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;covidapi{CovidRest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1586004186812" units="1" version="1.0"/>
+</session>

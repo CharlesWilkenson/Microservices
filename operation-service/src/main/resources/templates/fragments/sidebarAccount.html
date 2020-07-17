@@ -1,0 +1,71 @@
+ 
+ <aside>
+ <nav class="sidebar sidebar-offcanvas" id="sidebar" style="position:fixed">
+   <ul class="nav">
+	
+          <li class="nav-item nav-profile" style="padding-left: 10px;padding-right: -10px">
+         
+         <br/><br/><br/><br/>
+			  <a href="#" class="nav-link">
+				<div class="profile-image">
+				  <img class="img-xs rounded-circle" th:src="@{getImage(code=${''})}" src="../static/images/wilki.JPG" alt="profile image">
+				  <div class="dot-indicator bg-success"></div>
+				</div>
+				<div class="text-wrapper">
+				  <p class="profile-name"><label th:text="${lastname}"></label><label th:text="${firstname}"></label></p>
+			<!-- 	  <p class="designation" >The PDG</p> -->
+				</div>
+			  </a>
+			</li> 
+			
+			
+
+			
+			
+<li class="nav-item nav-category">Account Management</li>
+			
+			<li class="nav-item">
+			  <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+				<i class="menu-icon typcn typcn-document-add"></i>
+				<span class="menu-title">Account</span>
+				<i class="menu-arrow"></i>
+			  </a>
+			 <div class="collapse" id="auth">
+				<ul class="nav flex-column sub-menu">
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/operation-service/addAccountForm}">Add account</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/operation-service/searchAccountForm}">Search/Update</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" th:href="@{/operation-service/allSavingAccountsForm}">All Savings Accounts</a>
+						
+				  </li>
+				  <li class="nav-item">
+				  <a class="nav-link" th:href="@{/operation-service/allCheckingAccountsForm}">All Checking Accounts</a>
+				  </li>
+		<!-- 		  <li class="nav-item">
+					<a class="nav-link" th:href="@{/operation-service/allAccountsForm}">All Accounts</a>
+				 </li> -->
+				</ul>
+			  </div>
+			</li>
+			
+	
+			
+			
+			
+			
+	<li class="nav-item nav-category"></li>
+	
+		<li class="nav-item">
+			  <a class="nav-link" href="#">
+				<i class="menu-icon typcn typcn-document-text"></i>
+				<span class="menu-title">Sign out</span>
+			  </a>
+			</li>
+	</ul>
+	</nav>
+ 
+  </aside>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery multiStepForm Plugin Demo</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/header :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	  
+
+	  <div class="col-md-2" style="margin-top:130px;text-align:center">
+				     <div class="card profile-card" >
+						<div class="profile-header">&nbsp;</div>
+						<div class="profile-body">
+						
+							<div class="image-area" >
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+						<div class="fileupload-new " >
+							
+					<img id="preview" th:src="@{/assets/images/faces/noimage.jpg}" src="../static/assets/images/faces/noimage.jpg" /><br/>
+    <input type="file" id="image" name="image" style="display: none;"/>
+    <a href="javascript:changeProfile()">Choose</a> |
+    <a style="color: red" href="javascript:removeImage()">Remove</a>
+							   						
+					<!-- 	<br/>
+					Choose a photo -->
+							</div>
+						</div>
+						</div>
+					   
+					</div>
+
+			  </div>
+	  	</div>
+
+	    
+	    
+	    
+	    	  <div class="col-md-7" style="margin-top:130px;text-align:center;padding-right:80px">
+
+<!-- 			  <div class="row justify-content-center">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">New Employee</h3> </div>
+</div> -->
+			  	   <div class="signup-box " >
+<!--  <section id="main-content"> -->
+  <!-- <section id="main-content"> -->
+	  
+		<!-- page start-->
+ <form id="myForm" action="#" method="post" enctype="multipart/form-data">
+			  		
+
+	  <!-- One "tab" for each step in the form: -->
+	  <div class="card col-md-12">
+				  <div class="card-body">
+	  	  <div style="text-align:center;margin-top:5px;" >
+	    <span class="step" >1</span>
+	    <span class="step">2</span>
+		 <span class="step">3</span>
+		  	<span class="step">4</span>
+	   
+	  </div>
+	  <br/>
+	  
+	  
+	  <div class="row">
+	  <div class="tab">
+
+
+  <h4 class="tcolor">Basic Information</h4>
+	 
+	     <div class="col-md-4">
+		 <b>Lastname</b> 
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">person</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" name="lastname" id="lastname" placeholder="Lastname" required autofocus>
+						</div>
+					</div>
+       	<br><br>
+ 
+	  <b>Date of birth</b> 
+							  <div class="input-group">
+				         <span class="input-group-addon">
+							   <i class="material-icons">today</i>
+						</span>
+						 <div class="form-line">
+						<input type="text" class="form-control" name="dateBirth" id="dateBirth"  placeholder="Date of birth"  data-mask="____-__-__" required /><br/>
+							</div>
+							 </div>
+					
+					
+					
+					</div>
+					
+					 
+				
+	  	
+		
+		  <div class="col-md-3">
+		  
+		  
+ 	                  <b>Firstname</b> 
+					   <div class="input-group">
+					 
+						<span class="input-group-addon">
+							<i class="material-icons">person</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" name="firstname" id="firstname" placeholder="Firstname" required autofocus>
+						</div>
+					</div>
+		  
+		         	<br><br>
+		  
+							 		   <b>Place of birth</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">place</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" name="placeBirth"  id="placeBirth" placeholder="Place of birth" required>
+						</div>
+					</div>
+	  	</div>
+		
+		
+		  <div class="col-md-3 demo">
+			  <b>Sex</b> 
+							  <div class="input-group">
+				          <span class="input-group-addon">
+							 <!--   <i class="material-icons">person</i> -->
+						  </span>
+					  <div class="form-control">
+						  <input type="radio" name="sex" value="Male"  class="option-input radio" checked>
+						  Male
+						
+						 <input type="radio" id="sex" name="sex" value="Female"  class="option-input radio">
+						Female
+					</div>
+					</div> <br/>
+	  	</div>
+	
+
+		
+
+		</div></div>
+		
+		
+		
+		
+	  <div class="row">
+	  <div class="tab">
+
+
+  <h4 class="tcolor">Social</h4>
+	  <div class="row">
+		 <div class="col-md-4 mb-3">
+							   <b>Citizenship</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="citizenship" name="citizenship"  placeholder="Citizenship" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-3 mb-3">
+							   <b>Identification number</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="identification" name="identification"  placeholder="Id" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+	              <div class="col-md-5 mb-3 demo">
+							 <b>Marital Status</b> 
+							  <div class="input-group">
+				         <span class="input-group-addon">
+							   <i class="material-icons">person</i>
+						</span>
+						<div class="form-control">
+						<input type="radio" name="maritalStatus" value="Maried" id="maritalStatus" class="option-input radio">
+						<span>Maried</span>
+						
+						 <input type="radio" name="maritalStatus" value="Divorced" class="option-input radio">
+						Divorced
+						
+						<input type="radio" name="maritalStatus" value="Single" class="option-input radio" checked>
+						Single
+					</div></div>					
+				
+			   </div>
+					
+				 		
+
+
+	  	</div>
+		<h4 class="tcolor">Contact</h4>
+					 <div class="row">
+			<div class="col-md-4 mb-3">
+							  <b>Email</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">email</i>
+						</span>
+						<div class="form-line">
+							<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+						</div>
+					</div>
+				  
+					</div>
+							   
+
+		
+					
+					
+				    <div class="col-md-4 mb-3">
+							   <b>Phone</b>
+							  <div class="input-group">
+				         <span class="input-group-addon">
+						   <i class="material-icons">phone</i>
+						</span>
+						 <div class="form-line">
+						<input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number" data-mask="(___) ___-____"/>
+							</div></div>				  
+					</div>			
+
+</div>
+		
+		</div></div>	
+		
+		
+			  <div class="row">
+	  <div class="tab">
+
+
+  <h4 class="tcolor">Adress</h4>
+	  <div class="row">
+		 <div class="col-md-4 mb-3">
+							 <b>City</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="city" name="city"  placeholder="City" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+						    <div class="col-md-4 mb-3">
+						  <b>Street</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="street" name="street"  placeholder="Street" required>
+						</div>
+					</div>
+				  
+					</div>
+				
+					
+						    <div class="col-md-4 mb-3">
+						<b>#</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="number" name="number"  placeholder="Number" required>
+						</div>
+					</div>
+				  
+					</div>
+
+	  	</div>
+	  	
+	  	
+		<h4 class="tcolor">Post information</h4>
+					 <div class="row">
+			<div class="col-md-4 mb-3">
+							   <b>Fonction</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+						<select class="form-control" placeholder="fonction" id="fonction" name="fonction">
+						<option value="" hidden>Employe Fonction</option>
+						<option value="Accounting">Accounting</option>
+						<option value="Manager">Manager</option>
+						<option value="Secretary">Secretary</option>
+						<option value="Lawyer">Lawyer</option>
+						<option value="Engeneer">Engeneer</option>
+						</select>
+						
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							  <b>Department</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+						<select class="form-control" id="department" name="department">
+						 <option value=""hidden>Employe Service</option>
+						
+						<option value="Accounting">Accounting</option>
+						<option value="Manager">Manager</option>
+						<option value="Secretary">Secretary</option>
+						<option value="Lawyer">Lawyer</option>
+						<option value="Engeneer">Engeneer</option>
+						</select>
+						
+						</div>
+					</div>
+				  
+					</div>
+					
+						      <div class="col-md-4 mb-3">
+							  <b>Type</b>
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+						<select class="form-control" id="type" name="type">
+						<option value=""hidden>Type of Employe</option>
+							
+					<option value="Accounting">Accounting</option>
+						<option value="Manager">Manager</option>
+						<option value="Secretary">Secretary</option>
+						<option value="Lawyer">Lawyer</option>
+						<option value="Engeneer">Engeneer</option>
+						</select>
+						
+						</div>
+					</div>
+				  
+					</div>			
+
+</div>
+		
+		</div>
+		
+		
+			  <!-- Circles which indicates the steps of the form: -->
+
+		</div>
+		
+			  <div class="row">
+	  <div class="tab">
+
+
+  <h4 class="tcolor">Salary</h4>
+	  <div class="row">
+		 <div class="col-md-4 mb-3">
+							   <b>Gross salary</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">flag</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="gross_salary" name="gross_salary"  placeholder="Gross salary" required>
+						</div>
+					</div>
+				  
+					</div>
+					
+					
+						      <div class="col-md-4 mb-3">
+							   <b>Taux</b> 
+							  <div class="input-group">
+						<span class="input-group-addon">
+							<i class="material-icons">home</i>
+						</span>
+						<div class="form-line">
+							<input type="text" class="form-control" id="taux" name="taux"  placeholder="taux" required>
+						</div>
+					</div>
+				  
+					</div>
+	    
+					
+					
+				    <div class="col-md-4 mb-3">
+							   <b>Net salary</b>
+							  <div class="input-group">
+				         <span class="input-group-addon">
+						   <i class="material-icons">phone</i>
+						</span>
+						 <div class="form-line">
+						<input type="text" class="form-control" id="net_salary" name="net_salary" placeholder="Net salary" />
+							</div></div>				  
+					</div>			
+
+</div>
+		
+		</div>
+			  <div style="text-align:center;margin-top:0px;">
+	    <!-- <span class="step">1</span>
+	    <span class="step">2</span> -->
+		<button type="button" class="previous btncolor">Previous</button>
+	      	<button type="button" class="next btncolor">Next</button>
+			<button type="button" class="submit btncolor" id="btnSave">Save</button>
+	        <span class="input-group-addon"id="ajaxLoader" style="padding-top:4px;display:none" ><img th:src="@{/images/ajaxLoader.gif}"/></span>
+   
+	  </div>
+		</div>
+		
+	
+		</div></div>
+		
+	  </form>
+			  
+
+	 
+
+	
+</div>
+
+	
+	
+	  <!-- partial:partials/_footer.html -->
+	
+		<!-- main-panel ends -->
+		
+	  </div>
+	  
+	  </div>
+	
+	  	</div>
+	
+
+        </div>
+        <br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+   
+   
+
+	 $('#myForm').on('submit', function (e) {
+      	 var form = $('#myForm')[0];
+      	$('#ajaxLoader').show();
+           var data = new FormData(form);
+        e.preventDefault();
+
+        $.ajax({
+      	  url: '/employee-service/saveEmployee',
+      	  type: "post",
+      	  cache:false,
+            enctype: 'multipart/form-data',
+            data: data,
+     
+            // prevent jQuery from automatically transforming the data into a query string
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 1000000,
+          success: function (data) {
+        		runNotify({
+                    type: 'notify',
+                    message: 'Employee saved successfuly!'+data.code ,
+                    levelMessage: 'success'
+                    });
+        		reset();
+        		$('#ajaxLoader').hide();
+        		
+          },
+          error:function(){
+        		runNotify({
+                    type: 'notify',
+                    message: 'Failed to save new employee!',
+                    levelMessage: 'error'
+                    });
+        		$('#ajaxLoader').hide();
+          }
+        });
+
+      });
+    
+    
+    
+  });
+
+
+  
+  
+  
+
+function reset(){
+  	 
+	$('#code').val("");
+	$('#lastname').val("");
+	$("#firstname").val("");
+	$("#sex").prop("checked") ? true : false;
+	$("#dateBirth").val("");
+	$("#placeBirth").val("");
+    $("#citizenship").val("");
+	$("#preview").val("");
+	$("#maritalStatus").prop("checked") ? true : false;
+	$("#email").val("");
+	$("#phone").val("");
+
+	$("#fonction").val("");
+	$("#department").val("");
+	$("#type").val("");
+	$("#identification").val("");
+
+
+	$("#adress_id").val("");
+	$("#city").val("");
+$("#street").val("");
+$("#number").val("");
+
+$("#salary_id").val("");
+$("#net_salary").val("");
+$("#gross_salary").val("");
+$("#taux").val("");
+
+
+
+
+		}
+
+</script>
+</body>
+</html>
+
+
+		
+		
+	
+	

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/home/charles/Documents/WIKIBANK/Client-space-Service"/>
+			<item value="H:\WIKIBANK\Client-space-Service"/>
+			<item value="H:\WIKIBANK\auth-server"/>
+			<item value="H:\WIKIBANK\auth-client"/>
+			<item value="H:\WIKIBANK\client-service"/>
+			<item value="H:\WIKIBANK\employee-service"/>
+			<item value="H:\WIKIBANK\operation-service"/>
+			<item value="H:\WIKIBANK\user-service"/>
+			<item value="H:\WIKIBANK\Bank_Registration_Service"/>
+			<item value="H:\WIKIBANK\Bank_Config_Service"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

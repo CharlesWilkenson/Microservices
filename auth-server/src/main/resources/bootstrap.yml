@@ -1,0 +1,30 @@
+# Make the application available at http://localhost:7070/authserver
+spring: 
+  application:
+    name: authorization-server
+
+  cloud:
+    config:
+        uri: http://localhost:8888
+      
+
+
+
+server:
+  servlet: 
+    context-path: /authorization-server  
+
+# Our certificate settings for enabling JWT tokens
+jwt:
+  certificate:
+    store:
+      file: classpath:/certificate/mykeystore.jks
+      password: abirkhan04
+    key:
+      alias: myauthkey
+      password: abirkhan04      
+      
+      
+      
+      
+      

@@ -1,0 +1,180 @@
+$border-radius : 8px;
+$color-green: #66bf65;
+
+*{
+  box-sizing: border-box;
+  outline: none;
+}
+
+a{
+  color: #1590d0;
+}
+
+html,body{
+  background: #10a3f1;  /* fallback for old browsers */
+  height: 100%;
+  // font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+h1{
+  color: #6b7d88;
+}
+
+.form-group{
+  margin-top: 15px;
+
+  label{
+    color: rgba(0,0,0,0.8);
+  }
+}
+
+input[type="text"],
+input[type="password"]{
+  width: 100%;
+  display: block;
+  padding: 10px;
+  border-radius: $border-radius;
+  border: none;
+  background-color: #e5eeed;
+  margin-top: 5px;
+}
+
+.hide{
+  display: none;
+}
+
+.uic-wrapper{
+  height: 340px;
+  width: 300px;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  perspective: 500px;
+  perspective-origin: 50% -30%;
+  
+  ul{
+    list-style: none;
+    margin: 0; padding: 0;
+    height: 100%; width: 100%;
+
+    li{
+      margin: 0; padding: 0;
+      height: 100%; width: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      transition: all 0.3s;
+
+      .cards-wrapper{
+        .card-front{
+          position: relative;
+          z-index: 3;
+          box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.19);
+        }
+        .card-middle{
+          z-index: 2;
+        }
+        .card-back{
+          z-index: 1;
+        }
+        .card-out{
+          z-index: 0;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  nav{
+    position: relative;
+    z-index: 4;
+
+    a{
+      color: #ffb902;
+    }
+
+    .btn-back{
+      font-size: 28px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      transition: all 0.3s ease;
+
+      &:active{
+        transform: scale(0.96);
+      }
+
+      &.back-btn-hide{
+        margin-top: -30px;
+        opacity: 0;
+      }
+    }
+    .btn-finish,
+    .btn-next{
+      position: absolute;
+      bottom: 10px; left: 10px; right: 10px;
+      padding: 10px;
+      background-color: $color-green;
+      color: white; text-align: center;
+      border-radius: 0;
+      border-radius: $border-radius;
+      transition: all 0.3s ease;
+
+      &:active{
+        transform: scale(0.96);
+      }
+    }
+  }
+
+  .card{
+    background-color: #fff;
+    border-radius: 0;
+    height: 100%; width: 100%;
+    padding: 80px 20px 20px 20px;
+    transition: all 0.6s cubic-bezier(0.51, 0.02, 0.01, 0.88);
+    border-radius: $border-radius;
+  }
+
+  .noBack{
+    padding: 20px;
+  }
+
+  .toRight{
+    transform: translate3d(0,0,100px);
+    opacity: 0;
+  }
+
+  .toLeft{
+    transform: none;
+    opacity: 1;
+  }
+
+  &:hover{
+    .card-middle{
+      transform: translate3d(0, 0, -60px);
+      opacity: .8;
+    }
+  
+    .card-back{
+      transform: translate3d(0, 0, -120px);
+      opacity: .4;
+    }
+  }
+
+}
+
+.metaInfo{
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: rgba(255,255,255,0.8);
+
+  a{
+    color: #fff;
+    text-decoration: underline;
+  }
+}

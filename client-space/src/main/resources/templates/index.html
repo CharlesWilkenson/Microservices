@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+
+	<object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+</head>
+
+<body class="fix-header card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+<!--     <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div> -->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+           <header class="topbar">
+   <div th:include="fragments/header :: header"></div>
+   </header>    
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+          <aside class="left-sidebar">
+		<div th:include="fragments/sidebar :: aside"></div>
+		</aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+             <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">Profile</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Profile</li>
+                        </ol>
+                    </div>
+                <!--     <div class="col-md-6 col-4 align-self-center">
+                        <a href="https://wrappixel.com/templates/monsteradmin/" class="btn pull-right hidden-sm-down btn-success"> Upgrade to Pro</a>
+                    </div> -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+      <div class="row">
+                    <!-- Column -->
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 class="card-title">My deposits</h4>
+                                <div class="text-right">
+                                    <h2 th:text="${sumdeposits}" class="font-light m-b-0"><i class="ti-arrow-up text-success"></i></h2>
+                                    <span class="text-muted">Todays Income</span>
+                                </div>
+                                <span class="text-success">80%</span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    
+                                  <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 class="card-title">My withdrawals</h4>
+                                <div class="text-right">
+                                    <h2 th:text="${sumwithdrawals}" class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> </h2>
+                                    <span class="text-muted">Todays Income</span>
+                                </div>
+                                <span class="text-success">80%</span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 class="card-title">My transferts</h4>
+                                <div class="text-right">
+                                    <h2 th:text="${sumtransferts}" class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> $5,000</h2>
+                                    <span class="text-muted">Todays Income</span>
+                                </div>
+                                <span class="text-info">30%</span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+                <!-- Row -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 class="card-title">Revenue Statistics</h4>
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-line-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+                </div>
+                 
+                <div class="row">
+    
+                </div>
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer 
+       class="footer text-center">
+          <div th:include="fragments/footer :: footer"></div>
+          </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+   
+   
+   
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+
+
+
+
+
+
+	    <script th:src="@{/clientspace/assets/plugins/jquery/jquery.min.js}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script th:src="@{/clientspace/assets/plugins/bootstrap/js/tether.min.js}"></script>
+    <script th:src="@{/clientspace/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script th:src="@{/clientspace/js/jquery.slimscroll.js}"></script>
+    <!--Wave Effects -->
+    <script th:src="@{/clientspace/js/waves.js}"></script>
+    <!--Menu sidebar -->
+    <script th:src="@{/clientspace/js/sidebarmenu.js}"></script>
+    <!--stickey kit -->
+    <script th:src="@{/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js}"></script>
+    <!--Custom JavaScript -->
+     <script th:src="@{/clientspace/js/custom.min.js}" src="../static/clientspace/js/custom.min.js"></script>
+   
+ <!--    <script src="js/custom.min.js"></script> -->
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- Flot Charts JavaScript -->
+    <script th:src="@{/clientspace/assets/plugins/flot/jquery.flot.js}"></script>
+	
+    <script th:src="@{/clientspace/assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js}"></script>
+    <script th:src="@{/clientspace/js/flot-data.js}"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+  
+	
+	
+
+</body>
+
+</html>

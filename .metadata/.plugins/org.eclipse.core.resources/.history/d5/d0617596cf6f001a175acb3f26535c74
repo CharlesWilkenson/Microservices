@@ -1,0 +1,172 @@
+package org.clientspace.restController;
+
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class ClientSpaceRest {
+
+	
+@Autowired
+private RestTemplate restTemplate;
+	
+	@GetMapping(value = "/myDeposits")
+	public Deposit[] deposits(){
+		String url="http://operation-service/alldeposits/"+958537356;	
+				  Deposit[] response  = restTemplate.getForObject(url, Deposit[].class); 
+				  double sum=0;
+				  for(Deposit d:response) {
+					  sum +=d.getAmount();
+					  System.out.println("Amount of money :"+d.getAmount());
+				  }
+							
+				        return response;
+                               }
+
+	
+	@GetMapping(value = "/myWithdrawals")
+	public  Withdrawal[] withdrawals(){
+		String url="http://operation-service/allwithdrawals/"+958537356;
+		  double sum=0;
+		  
+		Withdrawal[] response  = restTemplate.getForObject(url, Withdrawal[].class); 
+				  
+				  for(Withdrawal d:response) {
+					  sum +=d.getAmount();
+					  System.out.println("Amount of money :"+d.getAmount());
+				  }
+						
+				        return response;
+                               }
+	
+	
+	@GetMapping(value = "/myTransferts")
+	public  Transfert[] transferts(){
+		String url="http://operation-service/alltransferts/"+958537356;
+		  double sum=0;
+		  
+		Transfert[] response  = restTemplate.getForObject(url, Transfert[].class); 
+				  
+				  for(Transfert d:response) {
+					  sum +=d.getAmount();
+				 System.out.println("Amount of money :"+d.getAmount());
+				  }
+						
+				        return response;
+                               }
+	
+
+	@Bean	  
+	  @LoadBalanced public RestTemplate restTemplate() { return new RestTemplate();
+	  }
+	
+}
+class Deposit{
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public Date getOperationDate() {
+		return operationDate;
+	}
+	public void setOperationDate(Date operationDate) {
+		this.operationDate = operationDate;
+	}
+	private long id;
+	private double amount;
+	private String accountNumber;
+	private Date operationDate;
+}
+
+class Transfert{
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public Date getOperationDate() {
+		return operationDate;
+	}
+	public void setOperationDate(Date operationDate) {
+		this.operationDate = operationDate;
+	}
+	public String getBeneficiaryNumber() {
+		return beneficiaryNumber;
+	}
+	public void setBeneficiaryNumber(String beneficiaryNumber) {
+		this.beneficiaryNumber = beneficiaryNumber;
+	}
+	private long id;
+	private double amount;
+	private String accountNumber;
+	private Date operationDate;
+	private String beneficiaryNumber;
+}
+class Withdrawal{
+	
+	private long id;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public Date getOperationDate() {
+		return operationDate;
+	}
+	public void setOperationDate(Date operationDate) {
+		this.operationDate = operationDate;
+	}
+	private double amount;
+	private String accountNumber;
+	private Date operationDate;
+
+}

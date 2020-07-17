@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery multiStepForm Plugin Demo</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+</head>
+<body>
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/header :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	  
+
+	    	
+	    	
+	    	<div class="col-md-9">
+		
+		
+			  <div style="padding-left:10px;padding-right:30px;padding-top:70px">
+			  <div class="row">
+<div class="col-md-5"><h3 style="color: rgba(70,71,135,0.84)">All Checking accounts</h3> </div>
+</div>
+			  	   <div class="signup-box card" >
+            <div class="row clearfix">
+             <br> <br>  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    
+          
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table   class="table table-bordered table-striped table-hover ">
+                                      <thead>
+                     <tr>
+                  
+                  <!--   <th >Client laststname</th>
+                    <th >Client firstname</th> -->
+                  <th>Account Number</th>
+                    <th>Balance</th>
+                    <th>Currency</th>
+                    <th >Active</th>
+                    <th >Date</th>
+                     <th>Action</th>
+                  </tr>
+                </thead>
+                
+                         
+                    <tbody>
+                        
+      
+                                        
+                </tbody>
+                                          <tfoot>
+                     <tr>
+                  
+                  <!--   <th >Client laststname</th>
+                    <th >Client firstname</th> -->
+                  <th>Account Number</th>
+                    <th>Balance</th>
+                    <th>Currency</th>
+                    <th >Active</th>
+                    <th >Date</th>
+                     <th>Action</th>
+                  </tr>
+                </tfoot>
+                                 
+                                </table>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+
+
+	
+</div>
+
+	
+	
+	  <!-- partial:partials/_footer.html dataTable js-exportable-->
+	
+		<!-- main-panel ends -->
+		
+	  </div>
+	  
+	  </div>
+	
+	
+
+
+</div>
+<br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+
+	<script type="text/javascript">
+
+          $(document).ready(function(){
+          $.ajax({
+           url: "/client-service/allSavings",
+           type: 'get',
+           dataType: 'json',
+           contentType: 'application/json',
+           cache:false,
+           timeout:600000,
+     
+           success: function (response) {              
+           var trHTML ;
+           $.each(response, function (i, item) {
+            trHTML +=
+            '<tr class="gradeX">'+
+            '<td>' + item.accountNumber + '</td>'+    
+            '<td>' + item.balance + '</td>'+
+            '<td>' + item.currency + '</td>'+
+            '<td>' + item.active + '</td>'+
+            '<td>' + item.date +'</td>'+
+          //  if(item.active===true)
+'<td> <button  id="btn_search" onclick="show('+item.accountNumber+')" data-placement="top" title="Disable" >Disable</button>'
+          
+        	                                                                     
+            '</tr>';
+        });
+    $('tbody').append(trHTML);
+//$('trHTML').ppendTo($('#table'));
+
+        
+    }
+    });
+
+});
+
+        
+        	function show(code){
+            
+              $.get({
+                  url: '/client-service/disable/'+code,              
+                  data:code,
+                  dataType: 'json',
+                  contentType: 'application/json',
+                  cache:false,
+                  timeout:600000,
+                  success: function (returnData) {
+                		runNotify({
+                            type: 'notify',                          
+                            message: 'Account disabled successfuly! ',
+                            levelMessage: 'success'
+                            });
+                              }
+                             });
+                             }
+     
+</script>
+
+</body>
+</html>
+
+
+		
+		
+	
+	

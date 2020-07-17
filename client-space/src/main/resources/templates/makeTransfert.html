@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  
+	<object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+ <link rel="stylesheet" th:href="@{/clientspace/transfert/scss/main.css}" href="../static/clientspace/transfert/scss/main.css">
+	
+
+</head>
+
+<body class="fix-header card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+ <!--    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div> -->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+           <header class="topbar">
+   <div th:include="fragments/header :: header"></div>
+   </header>    
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+          <aside class="left-sidebar">
+		<div th:include="fragments/sidebar :: aside"></div>
+		</aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+             <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">Transfert</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"> <a th:href="@{/client-space-service/clientHomePage}">Home</a></li>
+                            <li class="breadcrumb-item active">Transfert</li>
+                        </ol>
+                    </div>
+                <!--     <div class="col-md-6 col-4 align-self-center">
+                        <a href="https://wrappixel.com/templates/monsteradmin/" class="btn pull-right hidden-sm-down btn-success"> Upgrade to Pro</a>
+                    </div> -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                <div class="col-md-4 ">
+                
+                </div>
+                 	  
+             <div class="card col-md-4">
+             <label id="msg"></label>
+				  <div class="card-body">
+			
+			<form method="post" action="#" id="myForm" class="form-horizontal form-material">				   
+				             
+            <div class="card " id="panelmyaccount">
+            
+              <h1>Transfert</h1>
+               
+              <div class="form-group">
+                <label for="">Your account number</label>
+                <input type="text" id="account_number" name="account_number" placeholder="Your account....">
+              </div>
+
+               
+
+            <div class="form-group">          
+            <div class="col-sm-4">
+            <button id="btnmyaccount"  href="#0" class="btn btn-primary btn-next">Next<i class="fa fa-arrow-right"></i></button>
+            </div>
+            </div>
+            </div>
+            
+            
+            
+            <div class="card " id="panelhisaccount" style="display: none">
+           <!--   <a class="btn-back" href="#0"><i class="fa fa-arrow-left"></i></a> -->
+             <h1>Transfert</h1>
+              <div class="form-group">
+              
+                <label for="">The other account number</label>
+                <input type="text" id="account_number2" name="account_number2" placeholder="The other account">
+              </div>
+
+          <div class="row">
+         <div class="col-md-8">
+            <div class="form-group">      
+            <div >
+            <button id="btnprevious"  href="#0" class="btn btn-primary btn-back "><i class="fa fa-arrow-left"></i>Previous</button>
+            </div>
+            </div>
+            </div>
+            
+            <div class="col-md-4">
+             <div class="form-group">
+            <div >
+            <button id="btnhisaccount" class="btn btn-primary btn-next">Next<i class="fa fa-arrow-right"></i></button>
+            </div>
+            </div></div>
+            </div>
+            </div>
+            
+            
+            
+            
+                   
+            <div class="card " id="panelamount" style="display: none">
+           <!--   <a class="btn-back" href="#0"><i class="fa fa-arrow-left"></i></a> -->
+             <h1>Transfert</h1>
+              <div class="form-group">
+                <label for="">The amount of money to be transfered</label>
+                <input type="text" id="amount" name="amount" placeholder="The other account">
+              </div>
+
+          <div class="row">
+         <div class="col-md-8">
+            <div class="form-group">      
+            <div >
+            <button id="btnprevious3"  href="#0" class="btn btn-primary btn-back "><i class="fa fa-arrow-left"></i>Previous</button>
+            </div>
+            </div>
+            </div>
+            
+            <div class="col-md-4">
+             <div class="form-group">
+            <div >
+            <button id="btnfinish"  class="btn btn-primary btn-next">Next<i class="fa fa-arrow-right"></i></button>
+            </div>
+            </div></div>
+            </div>
+            </div>
+            
+            
+            
+            
+   <!--          <li class="card card-back">
+
+              <div class="form-group">
+                <label for="">Pick a username</label>
+                <input type="text" placeholder="Username">
+              </div>
+
+              <div class="form-group">
+                <label for="">Password</label>
+                <input type="password" placeholder="Password">
+              </div>
+
+            </li> -->
+            <div class="card " id="panelfinish" style="display: none">
+
+              <center>
+                <i style="font-size:62px;color: #66bf65;" class="fa fa-check"></i>
+                <br>
+                <h1>All Set!</h1>
+              </center>
+          
+            
+            
+              <div class="row">
+            <div class="col-md-8">
+            <div class="form-group">      
+            <div >
+            <button id="btnprevious2"  href="#0" class="btn btn-primary btn-back "><i class="fa fa-arrow-left"></i>Previous</button>
+            </div>
+            </div>
+            </div>
+            
+          
+              <div class="form-group">
+            <div class="col-sm-4">
+            <button type="button" id="btnfinish" data-toggle="modal" data-target="#exampleModal" class="btn btn-success btn-back">Finish</i></button>
+            </div>
+            </div>
+            </div>
+            
+            </div>
+         
+
+      <!--     <nav>
+            <ul>
+              <li><a class="btn-back" href="#0"><i class="fa fa-arrow-left"></i></a></li>
+              <li><a class="btn-next" href="#0">Next <i class="fa fa-arrow-right"></i></a></li>
+              <li><a href="#0" class="btn-finish hide">Finish</a></li>
+            </ul>
+          </nav> -->
+
+       
+     </form>
+     </div>
+    </div>			
+	
+	 <div class="col-md-4">
+                
+                </div>
+	</div>							  
+		 </div>
+       <!--            <div class="row d-flex align-items-center p-3 my-3 text-white-50">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Click to launch Smart Wizard modal
+        </button>
+      </div> -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirm your transaction</h5>
+              <label id="lblresult"></label>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <!-- Smart Wizard HTML -->
+           
+              Are you sure you want to transtert <label style="font-weight: bold;" id="lblamount"></label> to<label style="font-weight: bold;" id="lblaccount"></label>?
+            </div>
+            
+            
+            <div class="modal-footer">
+            <button  id="btntransfert" type="button" class="btn  btn-success" >Yes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+                 
+             
+                <!-- Row -->
+                <!-- ============================================================== -->
+               <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center">
+          <div th:include="fragments/footer :: footer"></div>
+          </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+   
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+<!-- 	
+		    Jquery Core Js
+    <script th:src="@{/clientspace/plugins/jquery/jquery.min.js}" src="../static/clientspace/plugins/jquery/jquery.min.js"></script>
+
+    Bootstrap Core Js
+    <script th:src="@{/clientspace/plugins/bootstrap/js/bootstrap.js}" src="../static/clientspace/plugins/bootstrap/js/bootstrap.js"></script>
+
+    Select Plugin Js
+    <script th:src="@{/clientspace/plugins/bootstrap-select/js/bootstrap-select.js}" src="../static/clientspace/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    Slimscroll Plugin Js
+    <script th:src="@{/clientspace/plugins/jquery-slimscroll/jquery.slimscroll.js}" src="../static/clientspace/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    Waves Effect Plugin Js
+    <script th:src="@{/clientspace/plugins/node-waves/waves.js}" src="../static/clientspace/plugins/node-waves/waves.js"></script>
+
+
+	
+
+    <script th:src="@{/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js}" src="../static/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    Custom JavaScript
+    <script th:src="@{/clientspace/js/custom.min.js}" src="../static/clientspace/js/custom.min.js"></script>
+    ==============================================================
+    Style switcher
+    ==============================================================
+    <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+	
+	 -->
+	
+	
+	    <!-- jQuery Versions -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Include SmartWizard JavaScript source -->
+    <script type="text/javascript" th:src="@{clientspace/dist/js/jquery.smartWizard.min.js}"></script>
+	
+	
+	
+		
+	
+	
+	 
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	
+	
+	
+	<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	
+	$('#btnprevious2').click(function(e){
+
+		e.preventDefault();
+		$('#msg').text("");
+		$('#panelhisaccount').hide();
+		$('#panelmyaccount').hide();
+		$('#panelfinish').hide();
+		$('#panelamount').show();
+	});
+	
+	
+	$('#btnprevious').click(function(e){
+		$('#msg').text("");
+		e.preventDefault();
+		
+		$('#panelhisaccount').hide();
+		$('#panelmyaccount').show();
+		$('#panelfinish').hide();
+		$('#panelamount').hide();
+	});
+	
+	
+	$('#btnprevious3').click(function(e){
+		$('#msg').text("");
+		e.preventDefault();
+		$('#panelamount').hide();
+		$('#panelhisaccount').show();
+		$('#panelmyaccount').hide();
+		$('#panelfinish').hide();
+	});
+	
+	
+	$('#btnfinish').click(function(e){
+		$('#msg').text("");
+		e.preventDefault();
+		$('#lblamount').text($('#amount').val());
+		$('#lblaccount').text($('#account_number2').val());
+		$('#panelamount').hide();
+		$('#panelhisaccount').hide();
+		$('#panelmyaccount').hide();
+		$('#panelfinish').show();
+	});
+	
+	
+	
+$('#btnmyaccount').click(function(e){
+
+e.preventDefault();
+//$('#ajaxLoader').show();
+$.ajax({
+url:'/client-space-service/verifyMyAccount',
+type:'post',
+cache:false,
+dataType:'json',
+data: $('#myForm').serialize(),
+success:function(data){
+if(data===null){
+/*  	runNotify({
+        type: 'notify',
+        message: 'Invalid Account number!',
+        levelMessage: 'warning'
+        });
+   	$('#ajaxLoader').hide(); */
+	$('#panelhisaccount').hide();
+	$('#panelmyaccount').show();
+	$('#panelfinish').hide();
+	$('#panelamount').hide();
+}else{	
+
+	$('#panelhisaccount').show();
+	$('#panelmyaccount').hide();
+	$('#panelfinish').hide();
+	$('#panelamount').hide();
+	//$('#ajaxLoader').hide();
+}
+	
+},
+
+error:function(err){	
+/* 	 $('#ajaxLoader').hide();		
+  runNotify({
+type: 'notify',
+ message: 'Internal server error!'+err.responseText,
+ levelMessage: 'error'
+ }); */
+	$('#panelhisaccount').hide();
+	$('#panelmyaccount').show();
+	$('#panelfinish').hide();
+	$('#panelamount').hide();
+}
+	
+});
+	
+});
+
+
+
+
+
+$('#btnhisaccount').click(function(e){
+
+	e.preventDefault();
+	//$('#ajaxLoader').show();	
+	var myAccount=$('#account_number').val();
+	var hisAccount=$('#account_number2').val();
+	if(myAccount===hisAccount){
+		
+		$('#msg').text("The accounts are the same").css("color","red");
+		
+			
+	}else{				
+		$.ajax({
+		url:'/client-space-service/verifyHisAccount',
+		type:'post',
+		cache:false,
+		dataType:'json',
+		data: $('#myForm').serialize(),
+		success:function(data){
+		if(data===null){
+		/*  	runNotify({
+		        type: 'notify',
+		        message: 'Invalid Account number!',
+		        levelMessage: 'warning'
+		        });
+		   	$('#ajaxLoader').hide(); */
+			$('#panelhisaccount').show();
+			$('#panelmyaccount').hide();
+			$('#panelfinish').hide();
+			$('#panelamount').hide();
+			
+			$('#msg').text("Invalid account").css("color","red");
+		}else{	
+			$('#panelamount').show();
+			$('#panelhisaccount').hide();
+			$('#panelmyaccount').hide();
+			$('#panelfinish').hide();
+			//$('#ajaxLoader').hide();
+			$('#msg').text("");
+		}
+			
+		},
+
+		error:function(err){	
+		/* 	 $('#ajaxLoader').hide();		
+		  runNotify({
+		type: 'notify',
+		 message: 'Internal server error!'+err.responseText,
+		 levelMessage: 'error'
+		 }); */
+			$('#panelhisaccount').show();
+			$('#panelmyaccount').hide();
+			$('#panelfinish').hide();
+			$('#msg').text("Transaction failed").css("color","red");
+		}
+			
+		});
+	}
+		
+	
+
+		
+	});
+
+
+
+
+
+
+
+$('#btntransfert').click(function(e){
+	 // $('#ajaxLoader').show();
+	     e.preventDefault();
+	      //Carry out a GET Ajax request using JQuery
+	      $.ajax({
+	          //The URL of the PHP file that searches MySQL.
+	             url: '/client-space-service/savetransfert',
+	             type: 'post',
+	             cache:false,
+	             data: $('#myForm').serialize(),
+	             success: function(){
+	            	
+	            	 $('#amount').val("");
+	            	 $('#account_number').val("");
+	            	 $('#account_number2').val("");
+	            	    $('#panelhisaccount').hide();
+	            		$('#panelmyaccount').show();
+	            		$('#panelfinish').hide();
+	            		$('#panelamount').hide();
+	                    $('#lblresult').text("Transaction succeded").css("color","green");
+	            		$('#btntransfert').hide();
+	                      },
+	      
+	      error:function(err){			
+	    	  //$('#btntransfert').show();
+	    	  $('$lblresult').text("Transaction failed").css("color","red");
+	      }
+	      });
+	  });
+
+
+});
+</script>	
+	
+	
+	
+
+</body>
+
+</html>

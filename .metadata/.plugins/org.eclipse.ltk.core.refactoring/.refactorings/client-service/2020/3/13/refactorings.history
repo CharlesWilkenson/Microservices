@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ResourceController.java&apos; to &apos;client-space/src/main/java/org.clientspace.restController&apos;&#x0D;&#x0A;- Original project: &apos;client-service&apos;&#x0D;&#x0A;- Destination element: &apos;client-space/src/main/java/org.clientspace.restController&apos;&#x0D;&#x0A;- Original element: &apos;org.ClientService.controller.ResourceController.java&apos;" description="Copy compilation unit" destination="=client-space/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.clientspace.restController" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.ClientService.controller{ResourceController.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1585239202479" units="1" version="1.0"/>
+</session>

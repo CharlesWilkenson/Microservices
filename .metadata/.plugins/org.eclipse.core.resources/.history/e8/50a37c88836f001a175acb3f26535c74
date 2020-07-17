@@ -1,0 +1,48 @@
+   <footer class="footer text-center">
+                © 2017 Monster Admin by wrappixel.com
+         
+         
+         
+         
+         
+         
+          <script  th:src="@{/clientspace/assets/plugins/bootstrap/js/tether.min.js}" src="../static/clientspace/assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script th:src="@{/clientspace/assets/plugins/bootstrap/js/bootstrap.min.js}" src="../static/clientspace/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script th:src="@{/clientspace/js/jquery.slimscroll.js}" src="../static/clientspace/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script th:src="@{/clientspace/js/waves.js}" src="../static/clientspace/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script th:src="@{/clientspace/js/sidebarmenu.js}" src="../static/clientspace/js/sidebarmenu.js"></script>
+ 
+ 
+    <!--stickey kit -->
+    <script  th:src="@{/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js}" 
+    src="../static/clientspace/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script th:src="@{/clientspace/js/custom.min.js}" src="../static/clientspace/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+   
+   
+   
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- Flot Charts JavaScript -->
+    <script th:src="@{/clientspace/assets/plugins/flot/jquery.flot.js}" src="../static/clientspace/assets/plugins/flot/jquery.flot.js"></script>
+    <script  th:src="@{/clientspace/assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js}"  src="../static/clientspace/assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script th:src="@{/clientspace/js/flot-data.js}" src="../static/clientspace/js/flot-data.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script th:src="@{/clientspace/assets/plugins/styleswitcher/jQuery.style.switcher.js}" src="../static/clientspace/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+ <script th:src="@{/clientspace/assets/plugins/jquery/jquery.min.js}" src="../static/clientspace/assets/plugins/jquery/jquery.min.js}"></script>
+       
+         
+         
+         
+         
+         
+         
+         
+            </footer>

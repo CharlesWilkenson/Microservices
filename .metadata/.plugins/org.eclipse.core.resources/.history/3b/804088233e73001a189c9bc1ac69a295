@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery multiStepForm Plugin Demo</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+	
+</head>
+<body th:style="'background: url(/clientHomepage/img/home-bg.jpg) no-repeat center center fixed;'">
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/headerHome:: header"></div>
+	  
+	<div class="row">
+	  
+
+	  
+	  </div>
+	
+
+        </div>
+        <br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+
+</body>
+</html>
+
+
+		
+		
+	
+	

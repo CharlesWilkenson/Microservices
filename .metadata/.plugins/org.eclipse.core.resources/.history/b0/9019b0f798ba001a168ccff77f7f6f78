@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery multiStepForm Plugin Demo</title>
+ <object th:include="fragments/head :: head" th:remove="tag"></object>
+
+</head>
+<body>
+ <form id="myForm" action="#" method="post" enctype="multipart/form-data">
+	
+
+	<div class="container-scroller">
+	  <!-- partial:partials/_navbar.html -->
+<div th:include="fragments/header :: header"></div>
+	  
+	<div class="row">
+	  
+ 	  <div class="col-md-3">
+
+	<div th:include="fragments/sidebar :: aside"></div>
+ 
+	  </div>
+	  
+
+
+	    
+	    	  <div class="col-md-9" style="margin-top:130px;text-align:center;padding-right:80px">
+
+ <div class="signup-box card" >
+            <div class="row clearfix">
+             <br> <br>  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    
+          
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table   class="table table-bordered table-striped table-hover ">
+                                      <thead>
+                     <tr>
+                  <th>Code</th>
+                    <th>Lastname</th>
+                    <th>Firstname</th>
+    <!--                 <th>Email</th> -->
+                    <th >Phone</th>
+                    <th >DateBirth</th>
+                    <th >PlaceBirth</th>
+                    <th >Sexe</th>
+                    <th >Citizenship</th>
+            <!--         <th >Id</th>
+                    <th >M. Status</th>
+                    <th >City</th>
+                    <th >Street</th>
+                    <th >Number</th>
+                    <th >Fonction</th>
+                    <th >Department</th>
+                    <th >Type</th>  -->
+                  <th >Action</th> 
+                  </tr>
+                </thead>
+                
+                         
+                    <tbody>
+     
+                <tr th:each="val:${employees}" class="gradeX" >
+                  
+                    <td th:text="${val.code}"></td>
+                    <td th:text="${val.lastname}"></td>
+                 <td th:text="${val.firstname}"></td>
+                <td th:text="${val.phone}"></td>
+                    <td th:text="${val.dateBirth}"></td>
+                    <td th:text="${val.placeBirth }"></td>
+                     <td th:text="${val.sex}"></td>
+                    <td th:text="${val.citizenship}"></td>
+                     <td><button id="btnsearch"    data-placement="top"   title="Editer" class="glyphicon glyphicon-pencil"></button></td>
+      
+                  </tr>
+         
+                  
+            
+                </tbody>
+                        <tfoot>
+                        
+                    <th>Code</th>
+                    <th>Lastname</th>
+                    <th>Firstname</th>
+    <!--                 <th>Email</th> -->
+                    <th >Phone</th>
+                    <th >DateBirth</th>
+                    <th >PlaceBirth</th>
+                    <th >Sexe</th>
+                    <th >Citizenship</th>
+                     <th >Action</th> 
+                        </tfoot>     	
+      
+                                </table>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+
+
+	
+</div>
+
+	  </div>
+	
+	  </div>
+	vcvcvc
+	  	</div>
+	
+
+        </div>
+        
+        
+        <br/><br/><br/>
+  <!-- partial:partials/_footer.html -->
+		  <footer class="footer" style="margin-right:-30px;padding-bottom:-310px;">
+	 <div th:include="fragments/homefooter :: footer"></div>
+		  </footer>
+	
+</form>
+	
+	<script type="text/javascript">
+
+          $(document).ready(function(){
+  
+
+
+     $('#myForm').on('submit', function (e) {
+        	 var form = $('#myForm')[0];
+        	$('#ajaxLoader').show();
+             var data = new FormData(form);
+          e.preventDefault();
+
+          $.ajax({
+        	  url: '/employee-service/updateEmployee',
+        	  type: "post",
+        	  cache:false,
+              enctype: 'multipart/form-data',
+              data: data,
+       
+              // prevent jQuery from automatically transforming the data into a query string
+              processData: false,
+              contentType: false,
+              cache: false,
+              timeout: 1000000,
+            success: function (data) {
+          		runNotify({
+                      type: 'notify',
+                      message: 'Employee updated successfuly!',
+                      levelMessage: 'success'
+                      });
+          		reset();
+          		$('#ajaxLoader').hide();
+          		
+            },
+            error:function(){
+          		runNotify({
+                      type: 'notify',
+                      message: 'Failed to update  employee!',
+                      levelMessage: 'error'
+                      });
+          		$('#ajaxLoader').hide();
+            }
+          });
+
+        });
+
+});
+
+
+
+          
+      	function show(code){
+            $.get({
+
+                url: "/employee-service/edit/"+code,              
+                data:code,
+                dataType: 'json',
+                contentType: 'application/json',
+                cache:false,
+                timeout:600000,
+                success: function (returnData) {
+                	openLoginModal();
+                	$('#code').val(returnData.code);
+            		$('#lastname').val(returnData.lastname);
+            		$("#firstname").val(returnData.firstname);
+            		$("#sex").prop("checked") ? true : false;
+            		$("#dateBirth").val(returnData.dateBirth);
+            		$("#placeBirth").val(returnData.placeBirth);
+            	    $("#citizenship").val(returnData.citizenship);
+            		$("#preview").val(returnData.image);
+            		$("#maritalStatus").prop("checked") ? true : false;
+            		$("#email").val(returnData.email);
+            		$("#phone").val(returnData.phone);
+
+            		$("#fonction").val(returnData.fonction);
+            		$("#department").val(returnData.department);
+            		$("#type").val(returnData.type);
+            		$("#identification").val(returnData.identification);
+
+
+            		//$("#adress_id").val(returnData.adress.adress_id);
+            		$("#city").val(returnData.adress.city);
+            	$("#street").val(returnData.adress.street);
+            	$("#number").val(returnData.adress.number);
+
+            	//$("#salary_id").val(returnData.salary.salary_id);
+            	$("#net_salary").val(returnData.salary.net_salary);
+            	$("#gross_salary").val(returnData.salary.gross_salary);
+            	$("#taux").val(returnData.salary.taux);
+
+            $('#btngroup').show();
+            getImage();
+    		
+    	    	
+	    
+    		
+             }
+            });
+         }
+
+
+
+        function getImage(){
+
+     	   $.ajax({
+            type:'get',
+     	   url:'/employee-service/getImage',
+
+     	   success:function(img){
+         	 
+     	    	  $('#preview').attr('src','/employee-service/getImage');
+     	   	
+     	   }
+
+     	   	
+     	   });
+
+
+     	   	  }
+
+      	
+
+
+      	function reset(){
+      	  	 
+      		$('#code').val("");
+      		$('#lastname').val("");
+      		$("#firstname").val("");
+      		$("#sex").prop("checked") ? true : false;
+      		$("#dateBirth").val("");
+      		$("#placeBirth").val("");
+      	    $("#citizenship").val("");
+      		$("#preview").val("");
+      		$("#maritalStatus").prop("checked") ? true : false;
+      		$("#email").val("");
+      		$("#phone").val("");
+
+      		$("#fonction").val("");
+      		$("#department").val("");
+      		$("#type").val("");
+      		$("#identification").val("");
+
+
+      		$("#adress_id").val("");
+      		$("#city").val("");
+      	$("#street").val("");
+      	$("#number").val("");
+
+      	$("#salary_id").val("");
+      	$("#net_salary").val("");
+      	$("#gross_salary").val("");
+      	$("#taux").val("");
+        $('#preview').attr('src',"../static/assets/images/faces/noimage.jpg" );
+      			}
+			
+</script>
+
+
+
+</body>
+</html>
+
+
+		
+		
+	
+	

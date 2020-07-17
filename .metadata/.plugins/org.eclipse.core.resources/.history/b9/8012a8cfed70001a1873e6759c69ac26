@@ -1,0 +1,87 @@
+package org.clientspace.restController;
+
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class ClientSpaceRest {
+
+	
+@Autowired
+private OAuth2RestTemplate restTemplate;
+	
+	@PostMapping(value = "/verifyMyAccount")
+	public ResponseEntity<Object> checkMyAccount(Model model,@RequestParam("account_number")String myaccountNumber){
+		MultiValueMap<Object, String>map=new LinkedMultiValueMap<Object, String>();
+		map.add("account_number", myaccountNumber);
+		String URL_ACCOUNT="http://operation-service/findAccount";  
+		ResponseEntity<Account> response = null;
+		try {
+			response = restTemplate.postForEntity(URL_ACCOUNT, map, Account.class);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Object>(response,HttpStatus.OK);
+                               }
+
+	
+	@PostMapping(value = "/verifyHisAccount")
+	public ResponseEntity<Object> checkHisAccount(Model model,@RequestParam("account_number1")String myaccountNumber){
+		MultiValueMap<Object, String>map=new LinkedMultiValueMap<Object, String>();
+		map.add("account_number", myaccountNumber);
+		String URL_ACCOUNT="http://operation-service/findAccount";  
+		ResponseEntity<Account> response = null;
+		try {
+			response = restTemplate.postForEntity(URL_ACCOUNT, map, Account.class);
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Object>(response,HttpStatus.OK);
+                               }
+
+	
+								/*
+								 * @GetMapping(value = "/myWithdrawals") public Withdrawal[] withdrawals(){
+								 * String url="http://operation-service/allwithdrawals/"+958537356; double
+								 * sum=0;
+								 * 
+								 * Withdrawal[] response = restTemplate.getForObject(url, Withdrawal[].class);
+								 * 
+								 * for(Withdrawal d:response) { sum +=d.getAmount();
+								 * System.out.println("Amount of money :"+d.getAmount()); }
+								 * 
+								 * return response; }
+								 * 
+								 * 
+								 * @GetMapping(value = "/myTransferts") public Transfert[] transferts(){ String
+								 * url="http://operation-service/alltransferts/"+958537356; double sum=0;
+								 * 
+								 * Transfert[] response = restTemplate.getForObject(url, Transfert[].class);
+								 * 
+								 * for(Transfert d:response) { sum +=d.getAmount();
+								 * System.out.println("Amount of money :"+d.getAmount()); }
+								 * 
+								 * return response; }
+								 * 
+								 * 
+								 */
+}
+
