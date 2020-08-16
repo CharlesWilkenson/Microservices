@@ -1,0 +1,168 @@
+version: '3.3'
+
+
+# Define services
+services:
+
+# Define the config serverweb application
+       
+    config-server:
+        container_name: config-server
+        image: config-server
+        ports: 
+            - "8888:8888"
+        networks:
+          testing_net:
+            ipv4_address: 172.28.1.3
+ 
+
+
+
+       
+        # Define the  backend service application
+    eureka-server:
+          container_name: eureka-server
+          image: eureka-server
+          ports: 
+            - "8761:8761"
+        
+          networks:
+             testing_net:
+               ipv4_address: 172.28.1.4
+
+
+
+     
+      # Define the  backend of The sever proxy  application
+    proxy-service:
+           container_name: proxy-service
+           image: proxy-service
+           ports: 
+             - "9999:9999"
+# Always restart the container regardless of the exit status; try and restart the container indefinitely
+  
+           restart: always  
+           networks:
+              testing_net:
+                  ipv4_address: 172.28.1.7
+
+# Don't create this container until the config-server and eureka-server containers (below) have been created
+           depends_on:
+               - config-server
+               - eureka-server
+             #  - oauth2-server
+             #  - employee-service
+
+             # Pass postgproxy-service environment variables
+           environment:   
+    # Configure the Authorization Server and User Info Resource Server details
+                     - EUREKA_URI=http://eureka-server:8761/eureka/
+                     - CONFIG_SERVER_URL=http://config-server:8888/
+          
+                     - AUTHORIZATION_URI=http://172.28.1.6:7070/authorization-server/oauth/authorize
+                     - ACCES_TOKEN_URI=http://172.28.1.6:7070/authorization-server/oauth/token
+                 #   
+    
+                     - USER_INFO_URI=http://employee-service:9000/user/
+
+
+
+
+
+   # Define the  backend of The employee-service application
+    employee-service :
+            container_name: employee-service
+            image: employee-service
+            ports: 
+              - "9000:9000"
+            restart: always  
+            networks:
+                testing_net:
+                  ipv4_address: 172.28.1.5             
+
+            depends_on:
+                - config-server
+                - eureka-server
+              
+              #  - proxy-service   
+              # Pass employee-service environment variables
+            environment:
+              - EUREKA_URI=http://eureka-server:8761/eureka/
+              - CONFIG_SERVER_URL=http://config-server:8888/
+
+              - SECURITY_CLIENT_ACCESSTOKEN=http://172.28.1.6:7070/authorization-server/oauth/token
+                
+              #   - SPRING_DATASOURCE_URL=jdbc:mysql://dbmysql/dbemploye_service?useSSL=false
+                 #- SPRING_DATASOURCE_USERNAME=root 
+                 #- SPRING_DATASOURCE_PASSWORD=admin123 
+
+
+                                                        
+             
+  # Define the  backend of The oauth2-server application
+
+    oauth2-server:
+          container_name: oauth2-server
+          image: oauth2-server
+          ports:  
+             - "7070:7070"
+         # restart: always
+          networks:
+              testing_net:
+                ipv4_address: 172.28.1.6
+  # Don't create this container until the config-server and eureka-server containers (below) have been created
+          depends_on:
+              - config-server  
+              - eureka-server  
+             # - proxy-service
+
+             # Pass oauth2-server environment variables
+          environment:
+              - REDIRECT_URI=http://172.28.1.7:9999/login
+              - RELATIVE_URI=http://172.28.1.7:9999
+
+              - EUREKA_URI=http://eureka-server:8761/eureka/
+              - CONFIG_SERVER_URL=http://config-server:8888/
+              
+      
+
+
+              
+# Define the  Database Service (Mysql) 
+    dbmysql:
+      container_name: mysql
+      image: mysql
+      ports: 
+        - "3306:3306"
+# Always restart the container regardless of the exit status; try and restart the container indefinitely
+  
+      restart: always
+      environment:
+          MYSQL_ROOT_PASSWORD: admin123
+
+   # Mount an initialization script and the persistent mysql data 
+   
+      volumes:
+         - mysql_data:/var/lib/mysql
+      networks: 
+        testing_net:
+          ipv4_address: 172.28.1.8
+
+
+ # Define the  mapping volumes to persist the data
+volumes:
+     mysql_data:
+       driver: local
+   
+                                                        
+
+  # Networks to be created to facilitate communication between containers
+networks:
+    testing_net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.28.0.0/16
+     
+   
+           
